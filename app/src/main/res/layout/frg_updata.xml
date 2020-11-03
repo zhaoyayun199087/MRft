@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/ll_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/gengx_logo"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_mac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="@string/diag_current_version"
+            android:textColor="@color/color_ffffff" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="@string/diag_current_version"
+            android:textColor="@color/color_ffffff" />
+
+        <LinearLayout
+            android:id="@+id/ll_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/caid_btn_black"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:src="@mipmap/caid_icon_gengx_b" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginRight="50dp"
+                android:text="@string/detect_updata"
+                android:textColor="@color/main_page_name_color" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="200dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="200dp">
+
+            <TextView
+                android:id="@+id/tv_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="0%"
+                android:textColor="@color/color_07a5ff"
+                android:textSize="19sp"
+                android:visibility="invisible" />
+
+            <ProgressBar
+                android:id="@+id/pb_progress"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:indeterminate="false"
+                android:indeterminateDrawable="@drawable/loading_rotate"
+                android:visibility="invisible" />
+
+            <com.mingri.future.airfresh.view.GradientCircleVIew
+                android:id="@+id/circle_percent"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_update"
+            android:layout_width="206dp"
+            android:layout_height="38dp"
+            android:background="@drawable/oval_bg"
+            android:clickable="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+
+            android:text="@string/dialog_downloading"
+            android:textColor="@color/color_757e88"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btn_install"
+            android:layout_width="206dp"
+            android:layout_height="38dp"
+            android:textSize="16sp"
+            android:background="@drawable/caid_btn_black"
+            android:text="@string/update_frag_install"
+            android:textColor="@color/color_ffffff"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</FrameLayout>

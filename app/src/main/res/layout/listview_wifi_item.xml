@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:minHeight="60dp"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:padding="15dp">
+
+        <ImageView
+            android:layout_marginLeft="15dp"
+            android:id="@+id/iv_wifi_ico"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/peiz_list_icon_swifi4" />
+
+        <TextView
+            android:id="@+id/tv_wifi_ssid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="10dip"
+            android:layout_toRightOf="@id/iv_wifi_ico"
+            android:ellipsize="end"
+            android:maxEms="16"
+            android:singleLine="true"
+            android:text="TexfffffffffftView"
+            android:textColor="@color/color_ffffff" />
+
+        <ImageView
+            android:id="@+id/tv_wifi_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:src="@mipmap/peiz_icon_next"
+            />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/v2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_424850" />
+    <View
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/v2"
+        android:background="@color/color_050607" />
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_db3d3e">#db3d3e</color>
+    <color name="color_1f2229">#1f2229</color>
+    <color name="province_line_border">#C7C7C7</color>
+
+    <drawable name="transparent_background">#00000000</drawable>
+    <color name="main_page_name_color">#e6e6e6</color>
+    <color name="main_page_name_color1">#fefefe</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_737782">#737782</color>
+    <color name="color_262a35">#262a35</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_fefefe">#fefefe</color>
+    <color name="color_e6e6e6">#e6e6e6</color>
+    <color name="color_82b6e5">#82b6e5</color>
+    <color name="color_7d8c99">#7d8c99</color>
+    <color name="color_8bea78">#8bea78</color>
+    <color name="color_262a34">#262a34</color>
+    <color name="color_f7a77c">#f7a77c</color>
+    <color name="color_77cef4">#77cef4</color>
+    <color name="color_938986">#938986</color>
+    <color name="color_a97dec">#a97dec</color>
+    <color name="color_fa6f6f">#fa6f6f</color>
+    <color name="color_4989c5">#4989c5</color>
+    <color name="color_050607">#050607</color>
+    <color name="color_07a5ff">#07a5ff</color>
+    <color name="color_424850">#424850</color>
+    <color name="color_03a9f4">#03a9f4</color>
+    <color name="color_757e88">#757e88</color>
+    <color name="color_899099">#899099</color>
+    <color name="color_6ed083">#6ed083</color>
+    <color name="all_background_color">#1e2126</color>
+    <color name="main_bg">#202329</color>
+    <color name="detail_bg">#262a35</color>
+    <color name="lvwang_life">#6198cb</color>
+    <color name="lvwang_bg">#323640</color>
+    <color name="lvwang_des_color">#ccd6e0</color>
+
+    <color name="clock_percent">#03a9f4</color>
+    <color name="clock_text">#4989c5</color>
+
+    <color name="dialog_detect_updata">#757e88</color>
+
+    <color name="updata_progress">#07a5ff</color>
+</resources>

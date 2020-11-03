@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/tongs_icon_tongs" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_fefefe"
+        android:textSize="@dimen/main_page_name1"
+        android:layout_marginTop="15dp"
+        android:text="@string/chilrd_lock_page_tips" />
+
+    <Button
+        android:id="@+id/btn_chirld_lock"
+        android:layout_width="206dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/color_ffffff"
+        android:textStyle="bold"
+        android:textSize="@dimen/main_page_name1"
+        android:background="@drawable/caid_btn_black"
+        android:text="@string/open" />
+
+
+</LinearLayout>

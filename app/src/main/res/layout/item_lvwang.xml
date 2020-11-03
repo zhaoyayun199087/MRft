@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="360dp"
+        android:layout_height="324dp"
+        android:background="@color/lvwang_bg">
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lvwang_des_color"
+            android:textSize="@dimen/hc_des_text"
+            android:layout_centerHorizontal="true"
+            android:text="@string/lvwang_chuxiao"/>
+       <com.mingri.future.airfresh.view.CircleProgress
+           android:id="@+id/v_circle"
+           android:layout_marginTop="20dp"
+           android:layout_centerInParent="true"
+           android:layout_width="200dp"
+           android:layout_height="200dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="70"
+                android:textSize="33sp"
+                android:textColor="@color/lvwang_life"/>
+            <TextView
+                android:layout_marginLeft="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:textSize="20sp"
+                android:textColor="@color/lvwang_life"/>
+        </LinearLayout>
+     
+    </RelativeLayout>
+</RelativeLayout>

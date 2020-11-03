@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mingri.future.airfresh.view.ArcProgressbar
+        android:id="@+id/bright_bar"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:layout_alignParentTop="true"></com.mingri.future.airfresh.view.ArcProgressbar>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="145dp"
+        android:layout_below="@id/bright_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/caid_liangd1"
+            android:textColor="@color/color_899099"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_liangd_m" />
+
+
+            <TextView
+                android:id="@+id/tv_light"
+                android:layout_width="60dp"
+                android:gravity="right"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="90dp"
+                android:text="0"
+                android:textStyle="bold"
+                android:textColor="@color/color_ffffff"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="105dp"
+                android:text="%"
+                android:textStyle="bold"
+                android:textColor="@color/color_ffffff"
+                android:textSize="22sp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_liangd_b" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

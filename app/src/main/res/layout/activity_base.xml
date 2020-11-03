@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/all_right_dir"
+        android:paddingRight="@dimen/all_left_dir">
+
+        <ImageView
+            android:id="@+id/iv_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/sta_icon_wifi0" />
+
+        <ImageView
+            android:id="@+id/iv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/status_bar_div"
+            android:layout_toLeftOf="@id/iv_wifi"
+            android:src="@mipmap/sta_icon_naoz" />
+
+        <ImageView
+            android:id="@+id/iv_chirld_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/status_bar_div"
+            android:layout_toLeftOf="@id/iv_clock"
+            android:src="@mipmap/sta_icon_tongs" />
+
+        <ImageView
+            android:id="@+id/iv_ptc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/status_bar_div"
+            android:layout_toLeftOf="@id/iv_chirld_lock"
+            android:src="@mipmap/sta_icon_ptc" />
+
+        <ImageView
+            android:id="@+id/iv_uvc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/status_bar_div"
+            android:layout_toLeftOf="@id/iv_ptc"
+            android:src="@mipmap/sta_icon_uvc" />
+
+        <ImageView
+            android:id="@+id/iv_anion"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/status_bar_div"
+            android:layout_toLeftOf="@id/iv_uvc"
+            android:src="@mipmap/sta_icon_fuliz" />
+
+        <ImageView
+            android:id="@+id/iv_fresh_gear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/status_bar_div"
+            android:layout_toLeftOf="@id/iv_anion"
+            android:src="@mipmap/sta_icon_xinf" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

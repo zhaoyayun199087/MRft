@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="329dp"
+    android:layout_height="179dp"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="18dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/diag_connect"
+            android:textColor="@color/color_03a9f4"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_ssid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/color_03a9f4"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_pwd"
+            android:layout_width="0dp"
+            android:layout_weight="10"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:inputType="textPassword"
+            android:background="@null"
+            android:gravity="center_vertical|left"
+            android:hint="@string/diag_input_pwd"
+            android:textColor="@color/color_ffffff"
+            android:textColorHint="@color/color_737782"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/ib_visible"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:src="@mipmap/peiz_icon_kejian" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/color_03a9f4"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="103dp"
+            android:layout_height="38dp"
+            android:background="@drawable/caid_btn_blue"
+            android:text="@string/all_ok" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="103dp"
+            android:layout_height="38dp"
+            android:text="@string/all_cancel"
+            android:background="@drawable/caid_btn_black"
+
+            android:layout_marginLeft="40dp" />
+    </LinearLayout>
+
+</LinearLayout>

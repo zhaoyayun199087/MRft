@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_background_color"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:text="退出"
+                    android:id="@+id/btn_exit"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开关"
+                        android:textColor="@color/color_ffffff"
+
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="离子开关"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_plastic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="儿童锁"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_chirld"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="uvc开关"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_uvc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ptc开关"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_ptc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="静电开关"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_electric"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:visibility="invisible"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="风阀开关"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <Switch
+                        android:id="@+id/sw_surk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="风速递增"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/btn_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="模式切换"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/btn_surk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="风阀递增"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/btn_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="读信息"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="调压仓"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_surk_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_surk"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_surk_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="风速    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_Fresh_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_fresh"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_Fresh_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="模式    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_mode_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_mode"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_mode_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="UVC寿命"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_uvc_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_uvc"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_uvc_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="VOC      "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_dec_voc"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_voc"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_voc_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="湿度    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_humidity_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_humidity"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_humidity_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="温度    (℃)"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_temp_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_temp"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_temp_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="初效滤网寿命"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="模式    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp"
+                        android:visibility="invisible" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv1_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_lv1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv1_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="中效滤网寿命"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="模式    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp"
+                        android:visibility="invisible" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv2_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_lv2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv2_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="活性炭滤网寿命"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="模式    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp"
+                        android:visibility="invisible" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv3_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_lv3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv3_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="高效滤网寿命"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="模式    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp"
+                        android:visibility="invisible" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv4_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_lv4"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_lv4_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="定时关机(分钟)"
+                    android:textColor="@color/color_ffffff"
+                    android:textSize="25sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="模式    "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp"
+                        android:visibility="invisible" />
+
+                    <ImageButton
+                        android:id="@+id/btn_shutdown_dec"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec" />
+
+                    <TextView
+                        android:id="@+id/tv_shutdown"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:id="@+id/btn_shutdown_add"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="室内pm2.5(ug/m3)"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/tv_pm"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="室内甲醛(mg/m3)"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/tv_hcho"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="室内co2(ppm)"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/tv_co"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad"
+                        android:visibility="invisible" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:text="室内甲烷"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_dec"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/tv_ch4"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" "
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/selector_fresh_ad"
+                        android:visibility="invisible" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="空气质量报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_air"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="初效滤网报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_lv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="中效滤网报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_lv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="活性滤网报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_lv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="高效滤网报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_lv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="uvc寿命报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_uvc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="甲醛报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_hcho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="co2报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_co"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="甲烷报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_ch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="voc报警"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_asert_voc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="电机故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_fault_engin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="co2传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_co"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="pm25传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="voc传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_voc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="甲醛传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_hcho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="甲烷传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_ch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="温度传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="湿度传感器故障"
+                        android:textColor="@color/color_ffffff"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_falut_humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@mipmap/icon_guz3" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/color_ffffff"
+            android:textSize="25sp" />
+    </LinearLayout>
+</LinearLayout>

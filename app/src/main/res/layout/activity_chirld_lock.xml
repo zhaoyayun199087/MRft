@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:test="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/gao80"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_a"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_b"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_c"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_d"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_e"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_f"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_g"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_h"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_i"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_i"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_j"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_j"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_k"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_k"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:onClick="click"
+            android:id="@+id/tv_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/selector_btn_chilrd_lock"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/chilrd_lock_page_l"
+            android:textColor="@color/color_ffffff"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/color_ffffff"
+        android:text="@string/chilrd_lock_page_tips1"
+        android:layout_height="wrap_content" />
+</LinearLayout>

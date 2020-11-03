@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="256dp"
+    android:layout_height="208dp"
+   >
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_zuixin"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/hc_des_text"
+          android:layout_alignParentBottom="true"
+          android:layout_marginBottom="50dp"
+          android:layout_centerHorizontal="true"
+          android:textColor="@android:color/white"
+          android:text="@string/update_frag_already_old_version"/>
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion 24
+    buildToolsVersion "25.0.2"
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+    defaultConfig {
+        applicationId "com.mingri.future.airfresh"
+        minSdkVersion 19
+        targetSdkVersion 21
+        versionCode 67
+        versionName "1.9.3"
+    }
+    signingConfigs {
+        debug {
+            File strFile    = new File("../keystore/test.keystore")
+            storeFile file(strFile)
+            storePassword "123456"
+            keyAlias "test"
+            keyPassword "123456"
+        }
+        release {
+            File strFile    = new File("../keystore/test.keystore")
+            storeFile file(strFile)
+            storePassword "123456"
+            keyAlias "test"
+            keyPassword "123456"
+        }
+    }
+
+
+    buildTypes {
+        release {
+            signingConfig  signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig  signingConfigs.debug
+            pseudoLocalesEnabled true
+        }
+    }
+    productFlavors {
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+//    sourceSets {
+//        main() {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith('dex')
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = []
+        }
+        dx.additionalParameters += '--multi-dex' // enable multidex
+
+        // optional
+        // dx.additionalParameters += "--main-dex-list=$projectDir/<filename>".toString() // enable the main-dex-list
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile project(':gizlib')
+    compile 'com.android.support:support-v13:24.2.1'
+    compile files('libs/pgyer_sdk_2.4.2.jar')
+    compile 'com.jakewharton:butterknife:5.1.1'
+    compile project(':infinite-cards')
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.github.nanchen2251:AppManager:1.0.1'
+    compile 'com.android.support:multidex:1.0.0'
+}

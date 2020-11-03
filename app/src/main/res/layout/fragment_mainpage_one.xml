@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:shadowColor="#ff0d0103"
+        android:shadowDx="5"
+        android:shadowDy="10"
+        android:shadowRadius="15"
+        android:text="@string/main_page_inner_pm"
+        android:textColor="@color/main_page_name_color"
+        android:textSize="@dimen/main_page_name" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:shadowColor="#ff0d0103"
+            android:shadowDx="5"
+            android:shadowDy="15"
+            android:shadowRadius="25"
+            android:text="350"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="@dimen/main_page_date"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-30dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:shadowColor="#ff0d0103"
+            android:shadowDx="5"
+            android:shadowDy="15"
+            android:shadowRadius="25"
+            android:text="%"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="@dimen/main_page_date3"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:indeterminate="false"
+        android:indeterminateDrawable="@drawable/loading_rotate"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_falut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:src="@mipmap/icon_guz"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="..."
+        android:textColor="@color/main_page_name_color"
+        android:textSize="@dimen/main_page_info" />
+</LinearLayout>

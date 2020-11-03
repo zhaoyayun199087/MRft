@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:textSize="@dimen/main_page_name1"
+        android:textColor="@color/main_page_name_color"
+        android:text="@string/main_page_mode"
+        android:clickable="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:shadowColor="#ff0d0103"
+        android:shadowDx="5"
+        android:shadowDy="10"
+        android:shadowRadius="15"
+
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+
+    <ImageButton
+        android:layout_marginTop="32dp"
+        android:id="@+id/ib_config_net"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:src="@mipmap/icon_zhin"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/tv_date"
+            android:text="100"
+            android:clickable="true"
+            android:visibility="gone"
+            android:gravity="center"
+            android:textColor="@color/color_77cef4"
+            android:textSize="43sp"
+            android:layout_width="match_parent"
+            android:shadowColor="#ff0d0103"
+            android:shadowRadius="20"
+            android:shadowDx="8"
+            android:shadowDy="15"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="-20dp"
+            android:id="@+id/tv_company"
+            android:clickable="true"
+            android:visibility="gone"
+            android:text="%"
+            android:gravity="center"
+            android:textColor="@color/color_ffffff"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:shadowColor="#ff0d0103"
+            android:shadowRadius="20"
+            android:shadowDx="8"
+            android:shadowDy="15"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:id="@+id/tv_info"
+        android:text="@string/main_page_mode_smart"
+        android:textSize="@dimen/main_page_info1"
+        android:textColor="@color/main_page_name_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>

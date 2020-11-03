@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="283dp"
+    android:layout_height="287dp"
+    >
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/tanc_icon_jiaq"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:layout_marginTop="28dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv1"
+        android:layout_below="@id/iv"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_hcho_alert"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:layout_marginTop="22dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv2"
+        android:layout_below="@id/tv1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_width="wrap_content"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_tip1"
+        android:textColor="@color/color_757e88"/>
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv3"
+        android:layout_below="@id/tv2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_width="wrap_content"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_tip2"
+        android:textColor="@color/color_757e88"/>
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+        <TextView
+            android:gravity="center"
+            android:layout_marginRight="8dp"
+            android:clickable="true"
+            android:id="@+id/tv_ok"
+            android:layout_width="103dp"
+            android:layout_height="40dp"
+            android:background="@drawable/tanc_btn2"
+            android:textColor="@android:color/white"
+            android:text="@string/dialog_ok"/>
+
+    </LinearLayout>
+</RelativeLayout>

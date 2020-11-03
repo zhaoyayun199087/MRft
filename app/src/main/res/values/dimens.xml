@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="main_page_name">19sp</dimen>
+    <dimen name="main_page_info">17sp</dimen>
+    <dimen name="main_page_name1">16sp</dimen>
+    <dimen name="main_page_info1">14sp</dimen>
+    <dimen name="main_page_date">80sp</dimen>
+    <dimen name="main_page_date1">60sp</dimen>
+    <dimen name="main_page_date2">20sp</dimen>
+    <dimen name="main_page_date3">40sp</dimen>
+    <dimen name="main_page_div1">38dp</dimen>
+    <dimen name="status_bar_div">18dp</dimen>
+    <dimen name="all_right_dir">20dp</dimen>
+    <dimen name="all_left_dir">20dp</dimen>
+    <dimen name="sta_margin">5dp</dimen>>
+
+    <!--������fragment-->
+    <dimen name="flz_iv_top">100dp</dimen>
+    <dimen name="flz_des_top">70dp</dimen>
+    <dimen name="flz_btn_top">50dp</dimen>
+    
+    <dimen name="hc_des_text">17sp</dimen>
+    
+    <dimen name="clock_size">208dp</dimen>
+    <dimen name="dialog_new_version">17sp</dimen>
+    <dimen name="dialog_versino_code">14sp</dimen>
+
+    <dimen name="function_list_des_left">12dp</dimen>
+    <dimen name="function_list_des_size">18sp</dimen>
+    <dimen name="function_width">167dp</dimen>
+
+</resources>

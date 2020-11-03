@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginTop="43dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_fulz" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="45dp"
+
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:textColor="@color/color_fefefe"
+        android:text="@string/flz_des" />
+
+    <Button
+        android:textColor="@color/color_fefefe"
+
+        android:id="@+id/btn_anion"
+        android:layout_marginTop="30dp"
+        android:layout_width="206dp"
+        android:layout_height="42dp"
+        android:background="@drawable/caid_btn_black"
+        android:text="@string/close" />
+</LinearLayout>

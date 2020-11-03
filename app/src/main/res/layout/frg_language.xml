@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/rd_group"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rd_china"
+            android:layout_margin="10dp"
+            android:layout_width="144dp"
+            android:layout_height="206dp"
+            android:button="@null"
+            android:background="@drawable/icon_china"/>
+        <RadioButton
+            android:id="@+id/rd_eng"
+            android:layout_margin="10dp"
+            android:layout_width="144dp"
+            android:layout_height="206dp"
+            android:button="@null"
+            android:background="@drawable/icon_english"/>
+        <RadioButton
+            android:visibility="gone"
+            android:id="@+id/rd_korea"
+            android:layout_margin="10dp"
+            android:layout_width="144dp"
+            android:layout_height="206dp"
+            android:button="@null"
+            android:background="@drawable/icon_korea"/>
+    </RadioGroup>
+
+</FrameLayout>

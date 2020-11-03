@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <com.mingri.future.airfresh.view.ClockView
+        android:id="@+id/cv_clock"
+        android:layout_width="@dimen/clock_size"
+        android:layout_height="@dimen/clock_size"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <ImageButton
+            android:id="@+id/btn_clock"
+            android:background="@null"
+            android:layout_marginRight="45dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/clock_begin" />
+    </LinearLayout>
+</RelativeLayout>
