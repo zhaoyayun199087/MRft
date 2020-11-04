@@ -19,6 +19,7 @@ import com.mingri.future.airfresh.R;
 
 import org.greenrobot.eventbus.EventBus;
 
+import mingrifuture.gizlib.code.provider.MachineStatusForMrFrture;
 import mingrifuture.gizlib.code.util.LogUtils;
 import mingrifuture.gizlib.code.util.PxUtils;
 import mingrifuture.gizlib.code.util.SPUtils;
@@ -48,7 +49,7 @@ public class WifiConnectDialog extends Dialog {
     }
 
     protected void initView() {
-
+        MachineStatusForMrFrture.bShowWifiDialog = true;
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_connect_wifi, null);
         etPwd = (EditText) view.findViewById(R.id.et_pwd);
@@ -85,12 +86,16 @@ public class WifiConnectDialog extends Dialog {
                         typeid == (WifiCipherType.WIFICIPHER_WPA) ? 3 : 2));
                 Toast.makeText(getContext(), R.string.wifi_connecting,
                         Toast.LENGTH_SHORT).show();
+                MachineStatusForMrFrture.bShowWifiDialog = false;
+                MachineStatusForMrFrture.iCount = 0;
                 dismiss();
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MachineStatusForMrFrture.bShowWifiDialog = false;
+                MachineStatusForMrFrture.iCount = 0;
                 dismiss();
             }
         });

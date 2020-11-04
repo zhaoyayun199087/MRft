@@ -1,7 +1,7 @@
 /*
  *  Android Wheel Control.
  *  https://code.google.com/p/android-wheel/
- * 
+ *
  *  Copyright 2011 Yuri Kanivets
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,7 +43,7 @@ import java.util.List;
 
 /**
  * Numeric wheel view.
- * 
+ *
  * @author Yuri Kanivets
  */
 public class WheelView extends View {
@@ -53,8 +53,8 @@ public class WheelView extends View {
 	private int[] SHADOWS_COLORS = new int[] { 0xFF111111,
 			0x00AAAAAA, 0x00AAAAAA };
 	//*/
-	private int[] SHADOWS_COLORS = new int[] { 0xffffff,
-			0xffffff, 0xffffff };
+	private int[] SHADOWS_COLORS = new int[] { 0xef1e2126,
+			0xcf1e2126, 0x3f1e2126 };
 
 	/** Top and bottom items offset (to hide that) */
 	private static final int ITEM_OFFSET_PERCENT = 0;
@@ -94,7 +94,7 @@ public class WheelView extends View {
 	private int scrollingOffset;
 
 	// Cyclic
-	boolean isCyclic = true;
+	boolean isCyclic = false;
 
 	// Items layout
 	private LinearLayout itemsLayout;
@@ -196,7 +196,7 @@ public class WheelView extends View {
 
 	/**
 	 * Gets count of visible items
-	 * 
+	 *
 	 * @return the count of visible items
 	 */
 	public int getVisibleItems() {
@@ -207,7 +207,7 @@ public class WheelView extends View {
 	 * Sets the desired count of visible items.
 	 * Actual amount of visible items depends on wheel layout parameters.
 	 * To apply changes and rebuild view call measure().
-	 * 
+	 *
 	 * @param count the desired count for visible items
 	 */
 	public void setVisibleItems(int count) {
@@ -238,7 +238,7 @@ public class WheelView extends View {
 	/**
 	 * Sets view adapter. Usually new adapters contain different views, so
 	 * it needs to rebuild view by calling measure().
-	 * 
+	 *
 	 * @param viewAdapter the view adapter
 	 */
 	public void setViewAdapter(WheelViewAdapter viewAdapter) {
@@ -341,7 +341,7 @@ public class WheelView extends View {
 
 	/**
 	 * Gets current value
-	 * 
+	 *
 	 * @return the current value
 	 */
 	public int getCurrentItem() {
@@ -350,7 +350,7 @@ public class WheelView extends View {
 
 	/**
 	 * Sets the current item. Does nothing when index is wrong.
-	 * 
+	 *
 	 * @param index the item index
 	 * @param animated the animation flag
 	 */
@@ -395,7 +395,7 @@ public class WheelView extends View {
 
 	/**
 	 * Sets the current item w/o animation. Does nothing when index is wrong.
-	 * 
+	 *
 	 * @param index the item index
 	 */
 	public void setCurrentItem(int index) {
@@ -503,7 +503,7 @@ public class WheelView extends View {
 
 	/**
 	 * Calculates desired height for layout
-	 * 
+	 *
 	 * @param layout
 	 *            the source layout
 	 * @return the desired layout height
@@ -632,7 +632,7 @@ public class WheelView extends View {
 		/*/ Modified by wulianghuan 2014-11-25
 		int height = (int)(1.5 * getItemHeight());
 		//*/
-		int height = (int)(3 * getItemHeight());
+		int height = (int)( getItemHeight());
 		//*/
 		topShadow.setBounds(0, 0, getWidth(), height);
 		topShadow.draw(canvas);
@@ -775,7 +775,7 @@ public class WheelView extends View {
 
 	/**
 	 * Scroll the wheel
-	 * @param  items to scroll
+	 * @param itemsToSkip items to scroll
 	 * @param time scrolling duration
 	 */
 	public void scroll(int itemsToScroll, int time) {
@@ -816,7 +816,7 @@ public class WheelView extends View {
 
 	/**
 	 * Rebuilds wheel items if necessary. Caches all unused items.
-	 * 
+	 *
 	 * @return true if items are rebuilt
 	 */
 	private boolean rebuildItems() {

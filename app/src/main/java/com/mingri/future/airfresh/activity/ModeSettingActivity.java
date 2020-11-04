@@ -227,10 +227,10 @@ public class ModeSettingActivity extends Activity {
                 finish();
                 break;
             case R.id.ib_fresh_dec:
-                if (!(Boolean) SPUtils.get(ModeSettingActivity.this, "is install", false)) {
-                    Toast.makeText(ModeSettingActivity.this, R.string.user_tips, Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (!(Boolean) SPUtils.get(ModeSettingActivity.this, "is install", false)) {
+//                    Toast.makeText(ModeSettingActivity.this, R.string.user_tips, Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 MachineStatusForMrFrture.bSmartControl = false;
                 iSurkTank--;
                 if (iSurkTank == 0) {
@@ -267,10 +267,10 @@ public class ModeSettingActivity extends Activity {
                 }
                 break;
             case R.id.ib_fresh_add:
-                if (!(Boolean) SPUtils.get(ModeSettingActivity.this, "is install", false)) {
-                    Toast.makeText(ModeSettingActivity.this, R.string.user_tips, Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (!(Boolean) SPUtils.get(ModeSettingActivity.this, "is install", false)) {
+//                    Toast.makeText(ModeSettingActivity.this, R.string.user_tips, Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 MachineStatusForMrFrture.bSmartControl = false;
                 iSurkTank++;
                 if (iSurkTank == 5) {

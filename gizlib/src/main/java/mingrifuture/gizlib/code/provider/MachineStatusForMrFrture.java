@@ -124,6 +124,11 @@ public class MachineStatusForMrFrture {
    */
     public static int iCount ;
     /*
+    是否在输入wifi密码对话框，如果是，则不息屏
+    */
+    public static boolean bShowWifiDialog = false ;
+
+    /*
     准备退出程序标志
     */
     public static boolean isExiting = false;

@@ -151,6 +151,7 @@ public class LightControlService extends Service {
 //                    }
 //                    LogUtils.d("set bright " + iLignt);
 //                    screenBrightnessTool.setBrightness1(iLignt);
+                    if(MachineStatusForMrFrture.bShowWifiDialog)return;
                     startDecreseLight();
                 } else if (MachineStatusForMrFrture.iCount == 0) {
                     iLignt = (int) SPUtils.get(LightControlService.this, "light", 40);
