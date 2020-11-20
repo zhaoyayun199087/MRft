@@ -1,12 +1,15 @@
 package com.mingri.future.airfresh.fragment;
 
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.mingri.future.airfresh.R;
 import com.mingri.future.airfresh.activity.MainActivity;
@@ -39,6 +42,8 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import mingrifuture.gizlib.code.config.Constants;
 import mingrifuture.gizlib.code.provider.MachineStatusForMrFrture;
+import mingrifuture.gizlib.code.util.LogUtils;
+import mingrifuture.gizlib.code.util.SPUtils;
 
 /**
  * Created by Administrator on 2017/6/27.
@@ -107,7 +112,21 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        int province_id = (int) SPUtils.get(getActivity(), "province_id", 0);
+        final int city_id = (int) SPUtils.get(getActivity(), "city_id", 0);
 
+        idProvince.setCurrentItem(province_id);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                idCity.setCurrentItem(city_id);
+            }
+        }, 1000);
+        LogUtils.d("zone set get " + province_id + "  " + city_id);
+    }
 
     /**
      * 解析省市区的XML数据
@@ -182,12 +201,27 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         idCity.addChangingListener(this);
     }
 
+    int provinceId = 0;
+    int cityId = 0;
     private void setUpData() {
         initProvinceDatas();
         idProvince.setViewAdapter(new ArrayWheelAdapter<String>(getActivity(), mProvinceDatas));
         // 设置可见条目数量
         idProvince.setVisibleItems(3);
         idCity.setVisibleItems(3);
+        provinceId = (int) SPUtils.get(getActivity(), "province_id", 0);
+        cityId = (int) SPUtils.get(getActivity(), "city_id", 0);
+
+        idProvince.setCurrentItem(provinceId);
+        LogUtils.d("city id is " + cityId);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LogUtils.d("city id is1  " + cityId);
+                idCity.setCurrentItem(cityId);
+            }
+        }, 1000);
+
         updateCities();
         updateAreas();
     }
@@ -207,6 +241,8 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
      */
     private void updateAreas() {
         int pCurrent = idCity.getCurrentItem();
+        LogUtils.d("zone set set city " + pCurrent);
+        SPUtils.put(getActivity(), "city_id", pCurrent);
         mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrent];
         String[] areas = mDistrictDatasMap.get(mCurrentCityName);
 
@@ -220,6 +256,8 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
      */
     private void updateCities() {
         int pCurrent = idProvince.getCurrentItem();
+        LogUtils.d("zone set set province " + pCurrent);
+        SPUtils.put(getActivity(), "province_id", pCurrent);
         mCurrentProviceName = mProvinceDatas[pCurrent];
         String[] cities = mCitisDatasMap.get(mCurrentProviceName);
         if (cities == null) {

@@ -96,4 +96,10 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.github.nanchen2251:AppManager:1.0.1'
     compile 'com.android.support:multidex:1.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.retrofit2:retrofit-converters:2.3.0'
+
 }
