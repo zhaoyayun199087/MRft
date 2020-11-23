@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.mingri.future.airfresh.R;
 
 import mingrifuture.gizlib.code.provider.MachineStatusForMrFrture;
+import mingrifuture.gizlib.code.util.SPUtils;
 
 /**
  * Created by Administrator on 2017/6/26.
@@ -47,7 +48,7 @@ public class MainDateFragTwo extends Fragment {
     private TextView company;
     private TextView info;
     private ImageButton ib;
-
+    String city = "";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,10 +83,13 @@ public class MainDateFragTwo extends Fragment {
         date.setTypeface(mTypeface);
         company.setTypeface(mTypeface);
 
-
+        city = (String) SPUtils.get(getActivity(), "city_name","");
+        if( city.length() > 1 ){
+            city = city.substring(0, city.length() -1);
+        }
         if (type == 1) {
             company.setVisibility(View.GONE);
-            name.setText(getResources().getString(R.string.main_page_out_AQI));
+            name.setText(city + "AQI");
             if (MachineStatusForMrFrture.aqi_outdoor > 999) {
                 MachineStatusForMrFrture.aqi_outdoor = 999;
             }
@@ -112,7 +116,7 @@ public class MainDateFragTwo extends Fragment {
             }
         } else if (type == 2) {
             company.setVisibility(View.GONE);
-            name.setText(getResources().getString(R.string.main_page_out_PM));
+            name.setText(city + "PM25");
             if (MachineStatusForMrFrture.pm25_outdoor > 999) {
                 MachineStatusForMrFrture.pm25_outdoor = 999;
             }
@@ -139,7 +143,7 @@ public class MainDateFragTwo extends Fragment {
             }
         } else if (type == 3) {
             company.setText("℃");
-            name.setText(getResources().getString(R.string.main_page_out_tmp));
+            name.setText(city + "温度");
             if (MachineStatusForMrFrture.temp_outdoor < -35) {
                 MachineStatusForMrFrture.temp_outdoor = -35;
             }
@@ -175,7 +179,7 @@ public class MainDateFragTwo extends Fragment {
             date.setText(str);
         } else {
             company.setText("%");
-            name.setText(getResources().getString(R.string.main_page_out_humidity));
+            name.setText(city + "湿度");
             if (MachineStatusForMrFrture.humidity_outdoor < 20) {
                 MachineStatusForMrFrture.humidity_outdoor = 20;
             }
@@ -226,7 +230,7 @@ public class MainDateFragTwo extends Fragment {
         }
         if (type == 1) {
             company.setVisibility(View.GONE);
-            name.setText(getResources().getString(R.string.main_page_out_AQI));
+            name.setText(city + "AQI");
             if (MachineStatusForMrFrture.aqi_outdoor > 999) {
                 MachineStatusForMrFrture.aqi_outdoor = 999;
             }
@@ -253,7 +257,7 @@ public class MainDateFragTwo extends Fragment {
             }
         } else if (type == 2) {
             company.setVisibility(View.GONE);
-            name.setText(getResources().getString(R.string.main_page_out_PM));
+            name.setText(city + "PM25");
             if (MachineStatusForMrFrture.pm25_outdoor > 999) {
                 MachineStatusForMrFrture.pm25_outdoor = 999;
             }
@@ -280,7 +284,7 @@ public class MainDateFragTwo extends Fragment {
             }
         } else if (type == 3) {
             company.setText("℃");
-            name.setText(getResources().getString(R.string.main_page_out_tmp));
+            name.setText(city + "温度");
             if (MachineStatusForMrFrture.temp_outdoor < -15) {
                 MachineStatusForMrFrture.temp_outdoor = -15;
             }
@@ -312,11 +316,11 @@ public class MainDateFragTwo extends Fragment {
                 company.setTextColor(getResources().getColor(R.color.color_fa6f6f));
                 date.setTextColor(getResources().getColor(R.color.color_fa6f6f));
             }
-            String str = String.format("%02d", (MachineStatusForMrFrture.temp_outdoor - 20));
+            String str = String.format("%02d", (MachineStatusForMrFrture.temp_outdoor));
             date.setText(str);
         } else {
             company.setText("%");
-            name.setText(getResources().getString(R.string.main_page_out_humidity));
+            name.setText(city + "湿度");
             if (MachineStatusForMrFrture.humidity_outdoor < 20) {
                 MachineStatusForMrFrture.humidity_outdoor = 20;
             }

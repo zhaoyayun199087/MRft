@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
 import com.mingri.future.airfresh.R;
 import com.mingri.future.airfresh.adapter.MainFragmentAdapter;
 
@@ -35,6 +36,7 @@ import com.mingri.future.airfresh.bean.CheckOtaEvent;
 import com.mingri.future.airfresh.bean.ChirldLock;
 import com.mingri.future.airfresh.bean.PopupEvent;
 import com.mingri.future.airfresh.bean.ReceDataFromMachine;
+import com.mingri.future.airfresh.bean.ReceOutDataFromNet;
 import com.mingri.future.airfresh.bean.SendDataToMachine;
 import com.mingri.future.airfresh.bean.SendDateToGiz;
 
@@ -48,6 +50,10 @@ import com.mingri.future.airfresh.bean.WifiChangeEvent;
 import com.mingri.future.airfresh.fragment.FunctionFragment;
 import com.mingri.future.airfresh.fragment.MainFragment;
 import com.mingri.future.airfresh.fragment.UVCFragment;
+import com.mingri.future.airfresh.network.APIService;
+import com.mingri.future.airfresh.network.BaseObersveImp;
+import com.mingri.future.airfresh.network.RetrofitFactory;
+import com.mingri.future.airfresh.network.RetrofitFactoryForCity;
 import com.mingri.future.airfresh.service.GizSendRecvService;
 import com.mingri.future.airfresh.service.LightControlService;
 import com.mingri.future.airfresh.service.SerialReceSendService;
@@ -68,14 +74,21 @@ import com.mingri.future.airfresh.view.dialog.ZhongxiaoLwAlertDialog;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import mingrifuture.gizlib.code.config.Constants;
 import mingrifuture.gizlib.code.provider.AppCmd;
 import mingrifuture.gizlib.code.provider.BizCmdConverter;
@@ -526,9 +539,152 @@ public class MainActivity extends FragmentActivity {
 //            }
             //判断是否需要自动关机
             judgeShutDown();
+
+            getNetWeather();
         }
 
     }
+
+    /**
+     * 从网络上获取室外天气数据
+     *
+     */
+    private int iCount = 0;
+    private void getNetWeather() {
+
+        if( !MachineStatusForMrFrture.bUpdateOutDate ){
+            iCount++;
+            if( iCount > 10 ){
+                iCount = 0;
+                MachineStatusForMrFrture.bUpdateOutDate = true;
+            }
+        }
+
+        if( MachineStatusForMrFrture.bUpdateOutDate ){
+            MachineStatusForMrFrture.bUpdateOutDate = false;
+            getCityId();
+        }
+    }
+
+    private void getCityId() {
+        String city = (String) SPUtils.get(this, "city_name", "");
+        Map<String, String> req = new HashMap<>();
+        req.put("location", city);
+        req.put("key", "1958a289a0a64f5fae20b3909eaf8ab6");
+        JSONObject jsonObject = new JSONObject(req);
+        RetrofitFactoryForCity.getInstance(this)
+                .createService(APIService.class)
+                .getCityId(req)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new BaseObersveImp(new BaseObersveImp.NetCallback() {
+
+                    @Override
+                    public void Onfailed(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onSucces(JSONObject jsonObject) {
+                        try {
+                            int code = jsonObject.getInt("code");
+                            if(code == 200){
+                                JSONArray jsonElements = jsonObject.getJSONArray("location");
+                                if( jsonElements != null  && jsonElements.length() > 0){
+                                    getWeather(jsonElements.getJSONObject(0).getString("id"));
+                                    getAqiDate(jsonElements.getJSONObject(0).getString("id"));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }));
+
+    }
+
+    private void getWeather(String id) {
+
+        Map<String, String> req = new HashMap<>();
+        req.put("location", id);
+        req.put("key", "1958a289a0a64f5fae20b3909eaf8ab6");
+        JSONObject jsonObject = new JSONObject(req);
+        RetrofitFactory.getInstance(this)
+                .createService(APIService.class)
+                .getWeatherDate(req)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new BaseObersveImp(new BaseObersveImp.NetCallback() {
+                    @Override
+                    public void Onfailed(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onSucces(JSONObject jsonObject) {
+                        try {
+                            int code = jsonObject.getInt("code");
+                            if(code == 200){
+                                JSONObject jsonElements = jsonObject.getJSONObject("now");
+                                if( jsonElements != null ){
+                                    MachineStatusForMrFrture.humidity_outdoor = (byte) jsonElements.getInt("humidity");
+                                    MachineStatusForMrFrture.temp_outdoor = (byte) jsonElements.getInt("temp");
+                                    LogUtils.d("temp_outdoor outdoor is " + MachineStatusForMrFrture.temp_outdoor + "  " + jsonElements.getInt("temp") + "  " + (byte) jsonElements.getInt("temp"));
+
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }));
+
+    }
+
+    private void getAqiDate(String id) {
+
+        Map<String, String> req = new HashMap<>();
+        req.put("location", id);
+        req.put("key", "1958a289a0a64f5fae20b3909eaf8ab6");
+        JSONObject jsonObject = new JSONObject(req);
+        RetrofitFactory.getInstance(this)
+                .createService(APIService.class)
+                .getAirQulity(req)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new BaseObersveImp(new BaseObersveImp.NetCallback() {
+                    @Override
+                    public void Onfailed(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onSucces(JSONObject jsonObject) {
+                        try {
+                            int code = jsonObject.getInt("code");
+                            if(code == 200){
+                                JSONObject jsonElements = jsonObject.getJSONObject("now");
+                                if( jsonElements != null ){
+                                    MachineStatusForMrFrture.bOutDateEnable = true;
+                                    EventBus.getDefault().post(new ReceOutDataFromNet());
+                                    MachineStatusForMrFrture.aqi_outdoor = jsonElements.getInt("aqi");
+                                    MachineStatusForMrFrture.pm25_outdoor = jsonElements.getInt("pm2p5");
+                                    MachineStatusForMrFrture.pm10_outdoor = jsonElements.getInt("pm10");
+                                    MachineStatusForMrFrture.o3_outdoor = jsonElements.getInt("o3");
+                                    MachineStatusForMrFrture.co_outdoor = (byte) jsonElements.getInt("co") ;
+                                    MachineStatusForMrFrture.no2_outdoor = jsonElements.getInt("no2");
+                                    MachineStatusForMrFrture.so2_outdoor =  jsonElements.getInt("so2");
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }));
+
+    }
+
 
     private void judgeShutDown() {
         if ((Integer) SPUtils.get(MainActivity.this, "shutswitch", 0) != 2) {

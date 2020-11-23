@@ -19,7 +19,11 @@ import com.mingri.future.airfresh.activity.TestActivity;
 import com.mingri.future.airfresh.activity.TestUpdataActivity;
 import com.mingri.future.airfresh.bean.ChirldLock;
 import com.mingri.future.airfresh.bean.ReceDataFromMachine;
+import com.mingri.future.airfresh.bean.ReceOutDataFromNet;
 import com.mingri.future.airfresh.bean.ShowNetWork;
+import com.mingri.future.airfresh.network.APIService;
+import com.mingri.future.airfresh.network.BaseObersveImp;
+import com.mingri.future.airfresh.network.RetrofitFactoryForCity;
 import com.mingri.future.airfresh.view.MainPageData.MainDateFragOne;
 import com.mingri.future.airfresh.view.MainPageData.MainDateFragOneAdapter;
 import com.mingri.future.airfresh.view.MainPageData.MainDateFragThree;
@@ -31,11 +35,19 @@ import com.mingri.future.airfresh.view.MainPageData.VerticalViewPager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import mingrifuture.gizlib.code.util.LogUtils;
+import mingrifuture.gizlib.code.util.SPUtils;
 
 
 public class MainFragment extends Fragment {
@@ -182,6 +194,7 @@ public class MainFragment extends Fragment {
         super.onResume();
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -226,6 +239,19 @@ public class MainFragment extends Fragment {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
+    public void sendSerialData(ReceOutDataFromNet data) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LogUtils.d("notify out date");
+                twoDateFragAdapter.notifyDataSetChanged();
+            }
+        },1000);
+
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void sendSerialData(ChirldLock data) {
         if (data.isLock()) {
             ibDown1.setVisibility(View.INVISIBLE);
@@ -241,4 +267,6 @@ public class MainFragment extends Fragment {
             ivLock.setVisibility(View.GONE);
         }
     }
+
+
 }

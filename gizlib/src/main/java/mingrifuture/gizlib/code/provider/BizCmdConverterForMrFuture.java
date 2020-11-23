@@ -352,21 +352,21 @@ public class BizCmdConverterForMrFuture {
                     MachineStatusForMrFrture.humidity = msg[24];
                     appCmd = new AppCmd(Constants.ANDROID_SEND_SET_HUMIDITY, CommonUtils.getIntFromTwoByte((byte) 0x00, MachineStatusForMrFrture.humidity));
                 }
-                //室外温度
-                if ((cmd & Constants.MR_APP_SEND_OUT_TEMP) == Constants.MR_APP_SEND_OUT_TEMP) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.temp_outdoor = msg[25];
-                }
-                //室外湿度
-                if ((cmd & Constants.MR_APP_SEND_OUT_HUMIDITY) == Constants.MR_APP_SEND_OUT_HUMIDITY) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.humidity_outdoor = msg[26];
-                }
-                //室外co
-                if ((cmd & Constants.MR_APP_SEND_OUT_CO) == Constants.MR_APP_SEND_OUT_CO) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.co_outdoor = msg[27];
-                }
+//                //室外温度
+//                if ((cmd & Constants.MR_APP_SEND_OUT_TEMP) == Constants.MR_APP_SEND_OUT_TEMP) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.temp_outdoor = msg[25];
+//                }
+//                //室外湿度
+//                if ((cmd & Constants.MR_APP_SEND_OUT_HUMIDITY) == Constants.MR_APP_SEND_OUT_HUMIDITY) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.humidity_outdoor = msg[26];
+//                }
+//                //室外co
+//                if ((cmd & Constants.MR_APP_SEND_OUT_CO) == Constants.MR_APP_SEND_OUT_CO) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.co_outdoor = msg[27];
+//                }
                 //定时开机
                 if (Math.abs(cmd) == Constants.MR_APP_SEND_OPENTIME) {
                     MachineStatusForMrFrture.Timing_On = CommonUtils.getIntFromTwoByte(msg[28], msg[29]);
@@ -392,30 +392,30 @@ public class BizCmdConverterForMrFuture {
                     MachineStatusForMrFrture.set_int2 = CommonUtils.getIntFromTwoByte(msg[36], msg[37]);
                     appCmd = new AppCmd(Constants.ANDROID_SEND_SETINT2, MachineStatusForMrFrture.set_int2);
                 }
-                if ((cmd & Constants.MR_APP_SEND_OUT_AQI) == Constants.MR_APP_SEND_OUT_AQI) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.aqi_outdoor = CommonUtils.getIntFromTwoByte(msg[38], msg[39]);
-                }
-                if ((cmd & Constants.MR_APP_SEND_OUT_PM25) == Constants.MR_APP_SEND_OUT_PM25) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.pm25_outdoor = CommonUtils.getIntFromTwoByte(msg[40], msg[41]);
-                }
-                if ((cmd & Constants.MR_APP_SEND_OUT_PM10) == Constants.MR_APP_SEND_OUT_PM10) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.pm10_outdoor = CommonUtils.getIntFromTwoByte(msg[42], msg[43]);
-                }
-                if (Math.abs((cmd & Constants.MR_APP_SEND_OUT_SO2)) == (long) Constants.MR_APP_SEND_OUT_SO2) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.so2_outdoor = CommonUtils.getIntFromTwoByte(msg[44], msg[45]);
-                }
-                if ((long) (cmd & Constants.MR_APP_SEND_OUT_NO2) == (long) Constants.MR_APP_SEND_OUT_NO2) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.no2_outdoor = CommonUtils.getIntFromTwoByte(msg[46], msg[47]);
-                }
-                if ((long) (cmd & Constants.MR_APP_SEND_OUT_O3) == (long) Constants.MR_APP_SEND_OUT_O3) {
-                    MachineStatusForMrFrture.bOutDateEnable = true;
-                    MachineStatusForMrFrture.o3_outdoor = CommonUtils.getIntFromTwoByte(msg[48], msg[49]);
-                }
+//                if ((cmd & Constants.MR_APP_SEND_OUT_AQI) == Constants.MR_APP_SEND_OUT_AQI) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.aqi_outdoor = CommonUtils.getIntFromTwoByte(msg[38], msg[39]);
+//                }
+//                if ((cmd & Constants.MR_APP_SEND_OUT_PM25) == Constants.MR_APP_SEND_OUT_PM25) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.pm25_outdoor = CommonUtils.getIntFromTwoByte(msg[40], msg[41]);
+//                }
+//                if ((cmd & Constants.MR_APP_SEND_OUT_PM10) == Constants.MR_APP_SEND_OUT_PM10) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.pm10_outdoor = CommonUtils.getIntFromTwoByte(msg[42], msg[43]);
+//                }
+//                if (Math.abs((cmd & Constants.MR_APP_SEND_OUT_SO2)) == (long) Constants.MR_APP_SEND_OUT_SO2) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.so2_outdoor = CommonUtils.getIntFromTwoByte(msg[44], msg[45]);
+//                }
+//                if ((long) (cmd & Constants.MR_APP_SEND_OUT_NO2) == (long) Constants.MR_APP_SEND_OUT_NO2) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.no2_outdoor = CommonUtils.getIntFromTwoByte(msg[46], msg[47]);
+//                }
+//                if ((long) (cmd & Constants.MR_APP_SEND_OUT_O3) == (long) Constants.MR_APP_SEND_OUT_O3) {
+//                    MachineStatusForMrFrture.bOutDateEnable = true;
+//                    MachineStatusForMrFrture.o3_outdoor = CommonUtils.getIntFromTwoByte(msg[48], msg[49]);
+//                }
                 if (appCmd == null) {
                     appCmd = new AppCmd(0, 0);
                 }

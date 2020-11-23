@@ -119,13 +119,13 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         final int city_id = (int) SPUtils.get(getActivity(), "city_id", 0);
 
         idProvince.setCurrentItem(province_id);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                idCity.setCurrentItem(city_id);
-            }
-        }, 1000);
-        LogUtils.d("zone set get " + province_id + "  " + city_id);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                idCity.setCurrentItem(city_id);
+//            }
+//        }, 1000);
+//        LogUtils.d("zone set get " + province_id + "  " + city_id);
     }
 
     /**
@@ -244,6 +244,8 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         LogUtils.d("zone set set city " + pCurrent);
         SPUtils.put(getActivity(), "city_id", pCurrent);
         mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrent];
+        SPUtils.put(getActivity(), "city_name", mCurrentCityName);
+        MachineStatusForMrFrture.bUpdateOutDate = true;
         String[] areas = mDistrictDatasMap.get(mCurrentCityName);
 
         if (areas == null) {
@@ -259,12 +261,17 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         LogUtils.d("zone set set province " + pCurrent);
         SPUtils.put(getActivity(), "province_id", pCurrent);
         mCurrentProviceName = mProvinceDatas[pCurrent];
+        SPUtils.put(getActivity(), "province_name", mCurrentProviceName);
         String[] cities = mCitisDatasMap.get(mCurrentProviceName);
         if (cities == null) {
             cities = new String[] { "" };
         }
         idCity.setViewAdapter(new ArrayWheelAdapter<String>(getActivity(), cities));
-        idCity.setCurrentItem(0);
+        if( cities.length > cityId){
+            idCity.setCurrentItem(cityId);
+        }else {
+            idCity.setCurrentItem(0);
+        }
         updateAreas();
     }
 

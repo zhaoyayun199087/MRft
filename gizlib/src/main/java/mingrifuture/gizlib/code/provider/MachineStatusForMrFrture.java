@@ -140,4 +140,9 @@ public class MachineStatusForMrFrture {
     市区
      */
     public static String city;
+
+    /**
+     * 室外数据是否需要更新
+     */
+    public static boolean bUpdateOutDate =false;
 }

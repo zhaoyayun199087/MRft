@@ -21,25 +21,8 @@ public class BaseObersveImp implements Observer<JSONObject> {
 
     @Override
     public void onNext(JSONObject jsonObject) {
-        JSONObject data = null;
-        String content = null;
-        int code = 0;
-        try {
-            data = jsonObject.getJSONObject("data");
-            content = data.getString("content");
-        } catch (JSONException e) {
-            e.printStackTrace();
-            if( content == null && data != null){
-                content = data.toString();
-            }else{
-                netCallback.Onfailed(e);
-                return;
-            }
-        }catch (Exception e){
-            netCallback.Onfailed(e);
-            return;
-        }
-        netCallback.onSucces(code,content);
+        netCallback.onSucces(jsonObject);
+
     }
 
     @Override
@@ -53,7 +36,8 @@ public class BaseObersveImp implements Observer<JSONObject> {
     }
 
     public interface NetCallback{
-        public void onSucces(int code, String content);
         public void Onfailed(Throwable e);
+
+        void onSucces(JSONObject jsonObject);
     }
 }

@@ -45,13 +45,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.text.DecimalFormat;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import mingrifuture.gizlib.code.provider.MachineStatusForMrFrture;
 import mingrifuture.gizlib.code.util.LogUtils;
+import mingrifuture.gizlib.code.util.SPUtils;
 
 
 public class DetailParaActivity extends Activity {
@@ -193,6 +192,10 @@ public class DetailParaActivity extends Activity {
     TextView tvVocCompany;
     GestureDetector mDetector;
     protected static final float FLIP_DISTANCE = 50;
+    @InjectView(R.id.tv_province)
+    TextView tvProvince;
+    @InjectView(R.id.tv_city)
+    TextView tvCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,6 +214,10 @@ public class DetailParaActivity extends Activity {
         showPara(index);
         sendSerialData(new ReceDataFromMachine(new byte[]{}));
 
+        String province = (String) SPUtils.get(this, "province_name", "");
+        String city = (String) SPUtils.get(this, "city_name", "");
+        tvProvince.setText(province);
+        tvCity.setText(city);
         mDetector = new GestureDetector(this, new GestureDetector.OnGestureListener() {
 
             @Override
@@ -437,7 +444,7 @@ public class DetailParaActivity extends Activity {
                 tvOutPm25.setText(getResources().getString(R.string.main_page_air_quality_f));
                 tvOutPm25Value.setTextColor(getResources().getColor(R.color.color_938986));
             }
-            tvOutTmp.setText("" + (MachineStatusForMrFrture.temp_outdoor - 20));
+            tvOutTmp.setText("" + (MachineStatusForMrFrture.temp_outdoor));
             tvOutHumidity.setText("" + MachineStatusForMrFrture.humidity_outdoor);
             tvPm10.setText("" + MachineStatusForMrFrture.pm10_outdoor);
             tvO3.setText("" + MachineStatusForMrFrture.o3_outdoor);
@@ -864,9 +871,9 @@ public class DetailParaActivity extends Activity {
             return "0.00";
         int lenth = str.indexOf(".");
         if (lenth > 0) {
-            if (str.substring(lenth+1, str.length()).length() >= 2)
+            if (str.substring(lenth + 1, str.length()).length() >= 2)
                 return str.substring(0, lenth + 3);
-            if (str.substring(lenth+1, str.length()).length() == 1)
+            if (str.substring(lenth + 1, str.length()).length() == 1)
                 return str += "0";
         } else
             return str += ".00";
