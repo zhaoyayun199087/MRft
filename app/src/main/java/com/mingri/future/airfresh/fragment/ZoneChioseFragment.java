@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.mingri.future.airfresh.R;
 import com.mingri.future.airfresh.activity.MainActivity;
 import com.mingri.future.airfresh.bean.ReceDataFromMachine;
+import com.mingri.future.airfresh.bean.ReceOutDataFromNet;
 import com.mingri.future.airfresh.bean.SendDataToMachine;
 import com.mingri.future.airfresh.util.CommonUtils;
 import com.mingri.future.airfresh.util.CreateCmdToMachineFactory;
@@ -101,7 +102,6 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
     }
 
     private void updateUI() {
-        initProvinceDatas();
         setUpListener();
         setUpData();
     }
@@ -111,14 +111,13 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         super.onDestroyView();
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
-        int province_id = (int) SPUtils.get(getActivity(), "province_id", 0);
-        final int city_id = (int) SPUtils.get(getActivity(), "city_id", 0);
-
-        idProvince.setCurrentItem(province_id);
+//        int province_id = (int) SPUtils.get(getActivity(), "province_id", 0);
+//        final int city_id = (int) SPUtils.get(getActivity(), "city_id", 0);
+//
+//        idProvince.setCurrentItem(province_id);
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
@@ -168,6 +167,13 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
                 for (int j=0; j< cityList.size(); j++) {
                     // 遍历省下面的所有市的数据
                     cityNames[j] = cityList.get(j).getName();
+                    String setedCity = (String)SPUtils.get(getActivity(), "city_name", "");
+                    LogUtils.d("city set name " + setedCity + "  " + cityNames[j]);
+                    if( setedCity.equals(cityNames[j]) ){
+                        LogUtils.d("city set i j " + i + "  " + j);
+                        provinceId = i;
+                        cityId = j;
+                    }
                     List<DistrictModel> districtList = cityList.get(j).getDistrictList();
                     String[] distrinctNameArray = new String[districtList.size()];
                     DistrictModel[] distrinctArray = new DistrictModel[districtList.size()];
@@ -209,11 +215,16 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         // 设置可见条目数量
         idProvince.setVisibleItems(3);
         idCity.setVisibleItems(3);
-        provinceId = (int) SPUtils.get(getActivity(), "province_id", 0);
-        cityId = (int) SPUtils.get(getActivity(), "city_id", 0);
+//        provinceId = (int) SPUtils.get(getActivity(), "province_id", 0);
+//        cityId = (int) SPUtils.get(getActivity(), "city_id", 0);
 
-        idProvince.setCurrentItem(provinceId);
-        LogUtils.d("city id is " + cityId);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LogUtils.d("city id is " + provinceId);
+                idProvince.setCurrentItem(provinceId);
+            }
+        }, 300);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -242,7 +253,7 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
     private void updateAreas() {
         int pCurrent = idCity.getCurrentItem();
         LogUtils.d("zone set set city " + pCurrent);
-        SPUtils.put(getActivity(), "city_id", pCurrent);
+//        SPUtils.put(getActivity(), "city_id", pCurrent);
         mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrent];
         SPUtils.put(getActivity(), "city_name", mCurrentCityName);
         MachineStatusForMrFrture.bUpdateOutDate = true;
@@ -251,6 +262,7 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         if (areas == null) {
             areas = new String[] { "" };
         }
+        EventBus.getDefault().post(new ReceOutDataFromNet());
     }
 
     /**
@@ -259,7 +271,7 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
     private void updateCities() {
         int pCurrent = idProvince.getCurrentItem();
         LogUtils.d("zone set set province " + pCurrent);
-        SPUtils.put(getActivity(), "province_id", pCurrent);
+//        SPUtils.put(getActivity(), "province_id", pCurrent);
         mCurrentProviceName = mProvinceDatas[pCurrent];
         SPUtils.put(getActivity(), "province_name", mCurrentProviceName);
         String[] cities = mCitisDatasMap.get(mCurrentProviceName);

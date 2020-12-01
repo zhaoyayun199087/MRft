@@ -216,6 +216,10 @@ public class MainDateFragTwo extends Fragment {
     }
 
     public void updateDate() {
+        city = (String) SPUtils.get(getActivity(), "city_name","");
+        if( city.length() > 1 ){
+            city = city.substring(0, city.length() -1);
+        }
         int type = getArguments().getInt(ARG_SECTION_NUMBER);
         if (!MachineStatusForMrFrture.bOutDateEnable) {
             ib.setVisibility(View.VISIBLE);
