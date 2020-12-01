@@ -59,134 +59,134 @@ public class SerialReceSendService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-//        EventBus.getDefault().register(this);
-//        UC = new UartComm();
-//        //硬件串口端
-//        uart_fd = UC.uartInit("/dev/ttyS3");
-//        //频率设置
-//        UC.setOpt(uart_fd, 9600, 8, 0, 1);
-//        //开启收发线程
-//        thread = new HandlerThread("UartRecvThread233");
-//        thread.start();//创建一个HandlerThread并启动它
-//        mRecvHandler = new Handler(thread.getLooper());
-//        mRecvHandler.post(mRecvRunnable);
-//
-//        mSendDateRunnable = new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                // TODO Auto-generated method stub
-//                sendDate();
-//            }
-//        };
-//        mSendDateThread = new Thread(mSendDateRunnable);
-//        mSendDateThread.start();
+        EventBus.getDefault().register(this);
+        UC = new UartComm();
+        //硬件串口端
+        uart_fd = UC.uartInit("/dev/ttyS3");
+        //频率设置
+        UC.setOpt(uart_fd, 9600, 8, 0, 1);
+        //开启收发线程
+        thread = new HandlerThread("UartRecvThread233");
+        thread.start();//创建一个HandlerThread并启动它
+        mRecvHandler = new Handler(thread.getLooper());
+        mRecvHandler.post(mRecvRunnable);
+
+        mSendDateRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                sendDate();
+            }
+        };
+        mSendDateThread = new Thread(mSendDateRunnable);
+        mSendDateThread.start();
     }
 
     private void sendDate() {
-//        Task t = TaskQueue.getTask();
-//        while (true) {
-//            if (t != null && t.getData().length > 0) {
-////                FileUtils.writeLogToFile1("write date to usb date is -->"
-////                        + CommonUtils.decodeBytesToHexString(t.getData()), new byte[]{});
-//
-//                write(t.getData());
-//            }
-//            MachineStatusForMrFrture.sSendRecvNum++;
-//            if( MachineStatusForMrFrture.sSendRecvNum > 10 ){
-//                FileUtils.writeLogToFile1("send 10 times but not receive date", new byte[]{});
-//                MachineStatusForMrFrture.sSendRecvNum = 0;
-//            }
-//            try {
-//                Thread.sleep(200);
-//            } catch (InterruptedException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//
-//            t = TaskQueue.getTask();
-//        }
+        Task t = TaskQueue.getTask();
+        while (true) {
+            if (t != null && t.getData().length > 0) {
+//                FileUtils.writeLogToFile1("write date to usb date is -->"
+//                        + CommonUtils.decodeBytesToHexString(t.getData()), new byte[]{});
+
+                write(t.getData());
+            }
+            MachineStatusForMrFrture.sSendRecvNum++;
+            if( MachineStatusForMrFrture.sSendRecvNum > 10 ){
+                FileUtils.writeLogToFile1("send 10 times but not receive date", new byte[]{});
+                MachineStatusForMrFrture.sSendRecvNum = 0;
+            }
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            t = TaskQueue.getTask();
+        }
     }
 
     public void write(int[] data) {
-//        mNeedSendData = true;
-//        //设置为0 发送数据
-//        UC.setRS485WriteRead(0);
-//        UC.send(uart_fd, data, data.length);
-//        mNeedSendData = false;
-//        UC.setRS485WriteRead(1);
+        mNeedSendData = true;
+        //设置为0 发送数据
+        UC.setRS485WriteRead(0);
+        UC.send(uart_fd, data, data.length);
+        mNeedSendData = false;
+        UC.setRS485WriteRead(1);
     }
 
     private int iCount = 0;
     Runnable mRecvRunnable = new Runnable() {
         @Override
         public void run() {
-//            while (mRunning) {
-//                int size;
-//                //每次接受数据的最大容量
-//                int[] buffer = new int[256];
-//                if (!mNeedSendData) {
-//                    //set RS485 to send data mode
-//                    //设置为1 接受数据
-//                    UC.setRS485WriteRead(1);
-//                    size = UC.recv(uart_fd, buffer, 255);
-//                    if (size > 0) {
-//                        MachineStatusForMrFrture.sSendRecvNum = 0;
-//                        byte[] msg = new byte[size];
-//                        for (int i = 0; i < size; i++) {
-//                            msg[i] = (byte) buffer[i];
-//                        }
-//                        try {
-//                            if( MachineStatusForMrFrture.bUpdating ) {
-//                                EventBus.getDefault().post(new ReceDataFromMachine(msg));
-//                                continue;
-//                            }
-//                            //接收到的数据
-////                        FileUtils.writeLogToFile1("recv serial date ---> " + CommonUtils.decodeBytesToHexString(msg),new byte[]{});
-//                            System.arraycopy(msg, 0, cmdByte, cmdNum, msg.length);
-//                            cmdNum += msg.length;
-//                            if (cmdByte.length >= 9 && CommonUtils.decodeByteToHexString(cmdByte[0]).equals("ff") && CommonUtils.decodeByteToHexString(cmdByte[1]).equals("ff")) {
-//                                cmdLen = CommonUtils.getIntFromTwoByte(cmdByte[2], cmdByte[3]);
-//                            }
-//                            LogUtils.d("recv serial date is ---> " + CommonUtils.decodeBytesToHexString(cmdByte));
-//
-//                            LogUtils.d("recv serial date is ---> cmdlen cmdNum " + cmdLen + "  " + cmdNum + "  " + msg.length);
-//                            if( msg.length == 11  ){
-//                                LogUtils.d("boot mode 1 " + CommonUtils.decodeBytesToHexString(msg) );
-//
-//                                if( msg[0] == (byte)0xff && msg[1] == (byte)0xaa && msg[2] == (byte)0x00 && msg[3] == (byte)0x07 && msg[4] == (byte)0x87){
-//                                    LogUtils.d("boot mode 2" );
-//                                    mHander.post(new Runnable() {
-//                                        @Override
-//                                        public void run() {
-//                                            iCount++;
-//                                            if( iCount == 3 ){
-//                                                iCount = 0;
-//                                                Toast.makeText(SerialReceSendService.this,getString(R.string.boot_tip),Toast.LENGTH_SHORT).show();
-//                                            }
-//                                        }
-//                                    });
-//                                }
-//                            }
-//
-//                            if (cmdLen == cmdNum - 4) {
-////                          FileUtils.writeLogToFile1("cmd len is " + cmdLen + " num is " + cmdNum + " date is -----" , cmdByte);
-//                                dispatchDate(cmdByte, cmdNum);
-//                                cmdNum = 0;
-//                                cmdLen = 0;
-//                            }
-//                            if( cmdLen < (cmdNum - 4) ){
-//                                cmdLen = 0;
-//                                cmdNum = 0;
-//                            }
-//                        }catch (Exception e){
-//                            cmdLen = 0;
-//                            cmdNum = 0;
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//            }
+            while (mRunning) {
+                int size;
+                //每次接受数据的最大容量
+                int[] buffer = new int[256];
+                if (!mNeedSendData) {
+                    //set RS485 to send data mode
+                    //设置为1 接受数据
+                    UC.setRS485WriteRead(1);
+                    size = UC.recv(uart_fd, buffer, 255);
+                    if (size > 0) {
+                        MachineStatusForMrFrture.sSendRecvNum = 0;
+                        byte[] msg = new byte[size];
+                        for (int i = 0; i < size; i++) {
+                            msg[i] = (byte) buffer[i];
+                        }
+                        try {
+                            if( MachineStatusForMrFrture.bUpdating ) {
+                                EventBus.getDefault().post(new ReceDataFromMachine(msg));
+                                continue;
+                            }
+                            //接收到的数据
+//                        FileUtils.writeLogToFile1("recv serial date ---> " + CommonUtils.decodeBytesToHexString(msg),new byte[]{});
+                            System.arraycopy(msg, 0, cmdByte, cmdNum, msg.length);
+                            cmdNum += msg.length;
+                            if (cmdByte.length >= 9 && CommonUtils.decodeByteToHexString(cmdByte[0]).equals("ff") && CommonUtils.decodeByteToHexString(cmdByte[1]).equals("ff")) {
+                                cmdLen = CommonUtils.getIntFromTwoByte(cmdByte[2], cmdByte[3]);
+                            }
+                            LogUtils.d("recv serial date is ---> " + CommonUtils.decodeBytesToHexString(cmdByte));
+
+                            LogUtils.d("recv serial date is ---> cmdlen cmdNum " + cmdLen + "  " + cmdNum + "  " + msg.length);
+                            if( msg.length == 11  ){
+                                LogUtils.d("boot mode 1 " + CommonUtils.decodeBytesToHexString(msg) );
+
+                                if( msg[0] == (byte)0xff && msg[1] == (byte)0xaa && msg[2] == (byte)0x00 && msg[3] == (byte)0x07 && msg[4] == (byte)0x87){
+                                    LogUtils.d("boot mode 2" );
+                                    mHander.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            iCount++;
+                                            if( iCount == 3 ){
+                                                iCount = 0;
+                                                Toast.makeText(SerialReceSendService.this,getString(R.string.boot_tip),Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+
+                            if (cmdLen == cmdNum - 4) {
+//                          FileUtils.writeLogToFile1("cmd len is " + cmdLen + " num is " + cmdNum + " date is -----" , cmdByte);
+                                dispatchDate(cmdByte, cmdNum);
+                                cmdNum = 0;
+                                cmdLen = 0;
+                            }
+                            if( cmdLen < (cmdNum - 4) ){
+                                cmdLen = 0;
+                                cmdNum = 0;
+                            }
+                        }catch (Exception e){
+                            cmdLen = 0;
+                            cmdNum = 0;
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
         }
     };
 

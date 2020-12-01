@@ -310,6 +310,11 @@ public class BizCmdConverterForMrFuture {
                 //调压仓
                 if (cmd == Constants.MR_APP_SEND_SURGE_TANK) {
                     MachineStatusForMrFrture.Surge_tank = (byte) (((msg[14]) & 0x07));
+                    if( MachineStatusForMrFrture.Surge_tank == 0 ){
+                        MachineStatusForMrFrture.Switch_Valve = false;
+                    } else {
+                        MachineStatusForMrFrture.Switch_Valve = true;
+                    }
                     appCmd = new AppCmd(Constants.ANDROID_SEND_SURGE_TANK, MachineStatusForMrFrture.Surge_tank);
                 }
                 //初效滤网寿命

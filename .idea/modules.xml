@@ -5,6 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="mrfure/app" />
       <module fileurl="file://$PROJECT_DIR$/gizlib/gizlib.iml" filepath="$PROJECT_DIR$/gizlib/gizlib.iml" group="mrfure/gizlib" />
       <module fileurl="file://$PROJECT_DIR$/infinite-cards/infinite-cards.iml" filepath="$PROJECT_DIR$/infinite-cards/infinite-cards.iml" group="mrfure/infinite-cards" />
+      <module fileurl="file://$PROJECT_DIR$/mrft-online.iml" filepath="$PROJECT_DIR$/mrft-online.iml" group="mrft-online" />
+      <module fileurl="file://$PROJECT_DIR$/app/mrft-online-app.iml" filepath="$PROJECT_DIR$/app/mrft-online-app.iml" group="mrft-online/app" />
+      <module fileurl="file://$PROJECT_DIR$/gizlib/mrft-online-gizlib.iml" filepath="$PROJECT_DIR$/gizlib/mrft-online-gizlib.iml" group="mrft-online/gizlib" />
+      <module fileurl="file://$PROJECT_DIR$/infinite-cards/mrft-online-infinite-cards.iml" filepath="$PROJECT_DIR$/infinite-cards/mrft-online-infinite-cards.iml" group="mrft-online/infinite-cards" />
       <module fileurl="file://$PROJECT_DIR$/mrfure.iml" filepath="$PROJECT_DIR$/mrfure.iml" group="mrfure" />
     </modules>
   </component>

@@ -151,6 +151,7 @@ public class CreateCmdToMachineFactory {
         date[9] = (byte) ((cmdFlag >> 24) & (0xff));
 
         byte temp = 0;
+        LogUtils.d("cmd down surge tank " + MachineStatusForMrFrture.Surge_tank);
         date[13] = (byte) ((MachineStatusForMrFrture.Surge_tank) & 0x07);
         if (MachineStatusForMrFrture.Switch_Electrostatic) {
             temp = (byte) (temp | 0x01);

@@ -57,6 +57,8 @@ public class GizSendRecvService extends Service {
                     LogUtils.d("app send cmd 0");
                     return;
                 } else if ((obj.getCmd() == Constants.ANDROID_SEND_CLOSETIME)) {
+                    LogUtils.d("cmd down1 ");
+
                     int time = (int) obj.getDate();
                     LogUtils.d("");
                     time = time / 60;
@@ -74,6 +76,8 @@ public class GizSendRecvService extends Service {
 //                        MachineStatusForMrFrture.Switch_Clock = false;
 //                    }
                 } else if ((obj.getCmd() == Constants.ANDROID_SEND_SWITCH_CHIRLD)) {
+                    LogUtils.d("cmd down2 ");
+
                     if ((Boolean) obj.getDate()) {
                         EventBus.getDefault().post(new ShowMainPage(1));
                         EventBus.getDefault().post(new ChirldLock(true));
@@ -83,6 +87,8 @@ public class GizSendRecvService extends Service {
                         MachineStatusForMrFrture.Child_Security_Lock = false;
                     }
                 } else if ((obj.getCmd() == Constants.ANDROID_SEND_MODE)) {
+                    LogUtils.d("cmd down3 ");
+
                     //设置模式
                     Object date = obj.getDate();
                     SPUtils.put(GizSendRecvService.this, "mode", date.toString());
@@ -108,6 +114,7 @@ public class GizSendRecvService extends Service {
 
                     }
                 } else if ((obj.getCmd() == Constants.ANDROID_SEND_WIND_LEVEL)) {
+                    LogUtils.d("cmd down4 ");
                     //设置新风量
                     Object date = obj.getDate();
                     int windLevel = Integer.parseInt(date.toString());
@@ -117,7 +124,20 @@ public class GizSendRecvService extends Service {
                     int[] wind1 = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_WIND_LEVEL | Constants.ANDROID_SEND_MODE);
                     LogUtils.d("cmd is " + CommonUtils.decodeBytesToHexString(wind1));
                     EventBus.getDefault().post(new SendDataToMachine(wind1));
+                }else if ((obj.getCmd() == Constants.ANDROID_SEND_SURGE_TANK)) {
+                    Object date = obj.getDate();
+                    if( Integer.parseInt(date.toString()) == 0 ){
+                        MachineStatusForMrFrture.Switch_Valve = false;
+                    } else {
+                        MachineStatusForMrFrture.Switch_Valve = true;
+                    }
+                    LogUtils.d("cmd down5-- " + date + "  " + MachineStatusForMrFrture.Switch_Valve);
+
+                    int[] d = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_SURGE_TANK | Constants.ANDROID_SEND_SWITCH_FRESH);
+                    EventBus.getDefault().post(new SendDataToMachine(d));
                 } else if ((obj.getCmd() == Constants.ANDROID_SEND_POWER)) {
+                    LogUtils.d("cmd down6 ");
+
                     //设置新风量
                     Object date = obj.getDate();
                     boolean power = Boolean.parseBoolean(date.toString());
@@ -139,6 +159,8 @@ public class GizSendRecvService extends Service {
                         getApplication().startActivity(dialogIntent);
                     }
                 } else {
+                    LogUtils.d("cmd down7 ");
+
                     int[] d = CreateCmdToMachineFactory.createControlCmd(obj.getCmd());
                     EventBus.getDefault().post(new SendDataToMachine(d));
                 }

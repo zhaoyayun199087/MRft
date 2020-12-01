@@ -233,7 +233,8 @@ public class ModeSettingActivity extends Activity {
 //                }
                 MachineStatusForMrFrture.bSmartControl = false;
                 iSurkTank--;
-                if (iSurkTank == 0) {
+                if (iSurkTank <= 0) {
+                    iSurkTank = 0;
                     ibFreshDec.setEnabled(false);
                     ibFreshDec.setImageResource(R.mipmap.xinf_btn_jian_d);
                 }
@@ -241,7 +242,7 @@ public class ModeSettingActivity extends Activity {
                     ibFreshAdd.setEnabled(true);
                     ibFreshAdd.setImageResource(R.mipmap.xinf_btn_jia_n);
                 }
-                if (iSurkTank == 0) {
+                if (iSurkTank <= 0) {
                     MachineStatusForMrFrture.Switch_Valve = false;
                 } else {
                     MachineStatusForMrFrture.Switch_Valve = true;
@@ -273,7 +274,8 @@ public class ModeSettingActivity extends Activity {
 //                }
                 MachineStatusForMrFrture.bSmartControl = false;
                 iSurkTank++;
-                if (iSurkTank == 5) {
+                if (iSurkTank >= 5) {
+                    iSurkTank = 5;
                     ibFreshAdd.setEnabled(false);
                     ibFreshAdd.setImageResource(R.mipmap.xinf_btn_jia_d);
                 }
@@ -281,7 +283,7 @@ public class ModeSettingActivity extends Activity {
                     ibFreshDec.setEnabled(true);
                     ibFreshDec.setImageResource(R.mipmap.xinf_btn_jian_n);
                 }
-                if (iSurkTank == 0) {
+                if (iSurkTank <= 0) {
                     MachineStatusForMrFrture.Switch_Valve = false;
                 } else {
                     MachineStatusForMrFrture.Switch_Valve = true;
@@ -590,6 +592,26 @@ public class ModeSettingActivity extends Activity {
             tvFresh.setVisibility(View.GONE);
             tvCompany.setVisibility(View.GONE);
             tvFreshInfo.setText(getString(R.string.all_close));
+        }
+        if (iSurkTank >= 5) {
+            iSurkTank = 5;
+            ibFreshAdd.setEnabled(false);
+            ibFreshAdd.setImageResource(R.mipmap.xinf_btn_jia_d);
+            ibFreshDec.setEnabled(true);
+            ibFreshDec.setImageResource(R.mipmap.xinf_btn_jian_n);
+        }
+        else if (iSurkTank <= 0) {
+            iSurkTank = 0;
+            ibFreshDec.setEnabled(false);
+            ibFreshDec.setImageResource(R.mipmap.xinf_btn_jian_d);
+            ibFreshAdd.setEnabled(true);
+            ibFreshAdd.setImageResource(R.mipmap.xinf_btn_jia_n);
+        }else{
+            ibFreshDec.setEnabled(true);
+            ibFreshDec.setImageResource(R.mipmap.xinf_btn_jian_n);
+            ibFreshAdd.setEnabled(true);
+            ibFreshAdd.setImageResource(R.mipmap.xinf_btn_jia_n);
+
         }
         tvCustom.setText("" + (MachineStatusForMrFrture.Wind_Velocity + 1) + getResources().getString(R.string.level));
         setStatusBar();
