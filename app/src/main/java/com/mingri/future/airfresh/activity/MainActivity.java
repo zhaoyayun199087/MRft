@@ -7,6 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
@@ -81,6 +87,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -140,6 +147,34 @@ public class MainActivity extends FragmentActivity {
     TimerForUVC timerForUVC;    //UVC灯周期性打开
     TimerTask mTimerTask;
     private boolean timeShowUVC = true;    //UVC正显示
+
+
+    LocationManager lm;
+    LocationListener ll = new LocationListener(){
+        public void onLocationChanged(Location location){
+            updateView(location);
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+            // TODO Auto-generated method stub
+            updateView(null);
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+            // TODO Auto-generated method stub
+            Location l = lm.getLastKnownLocation(provider);
+            updateView(l);
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+            // TODO Auto-generated method stub
+
+        }
+    };
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -351,10 +386,81 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         }, 5000);
+
+        //通过ip获取本地位置
+        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        String bestProvider = lm.getBestProvider(getCriteria(), true);
+        Location l = lm.getLastKnownLocation(bestProvider);
+        updateView(l);
+        lm.requestLocationUpdates(bestProvider, 5000, 8, ll);
+
+    }
+
+    private Criteria getCriteria() {
+        // TODO Auto-generated method stub
+        Criteria c = new Criteria();
+        c.setAccuracy(Criteria.ACCURACY_COARSE);
+        c.setSpeedRequired(false);
+        c.setCostAllowed(false);
+        c.setBearingRequired(false);
+        c.setAltitudeRequired(false);
+        c.setPowerRequirement(Criteria.POWER_LOW);
+        return c;
+    }
+    public void updateView(Location newLocation)
+    {
+        if(newLocation !=null){
+            String latitude = String.valueOf(newLocation.getLatitude());
+            String longitude = String.valueOf(newLocation.getLongitude());
+            double Latitude = newLocation.getLatitude();
+            double Longitude = newLocation.getLongitude();
+            String city = getAddressbyGeoPoint(Latitude,Longitude);
+            LogUtils.d("get city is " + city);
+            String setedCity = (String)SPUtils.get(this, "city_name", "");
+            if( setedCity.equals("") ) {
+                SPUtils.put(this, "city_name", city);
+            }
+        }
+        else{
+            LogUtils.d("get city is failed" );
+        }
+    }
+
+
+    //从地址Geopoint取得Address
+    public String getAddressbyGeoPoint(double Latitude, double Longitude) {
+        String strReturn = "";
+        try {
+            /* 创建GeoPoint不等于null */
+//	    if (gp != null)
+//	    {
+            /* 创建Geocoder对象，用于获得指定地点的地址 */
+            Geocoder gc = new Geocoder(MainActivity.this, Locale.getDefault());
+
+            /* 取出地理坐标经纬度*/
+            double geoLatitude = Latitude;
+            double geoLongitude = Longitude;
+
+            /* 自经纬度取得地址（可能有多行）*/
+            List<Address> lstAddress = gc.getFromLocation(geoLatitude, geoLongitude, 1);
+            StringBuilder sb = new StringBuilder();
+
+            /* 判断地址是否为多行 */
+            if (lstAddress.size() > 0) {
+                Address adsLocation = lstAddress.get(0);
+                sb.append(adsLocation.getLocality());  //当前经纬度所在的城市（市）
+            }
+
+            /* 将取得到的地址组合后放到stringbuilder对象中输出用 */
+            strReturn = sb.toString();
+//	    }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return strReturn;
     }
 
     private boolean isFirst = true;
-
     /**
      * 连接保存过的wifi
      */
