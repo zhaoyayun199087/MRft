@@ -61,6 +61,7 @@ import com.mingri.future.airfresh.network.BaseObersveImp;
 import com.mingri.future.airfresh.network.RetrofitFactory;
 import com.mingri.future.airfresh.network.RetrofitFactoryForCity;
 import com.mingri.future.airfresh.service.GizSendRecvService;
+import com.mingri.future.airfresh.service.LWCalculateService;
 import com.mingri.future.airfresh.service.LightControlService;
 import com.mingri.future.airfresh.service.SerialReceSendService;
 import com.mingri.future.airfresh.util.CommonUtils;
@@ -282,6 +283,8 @@ public class MainActivity extends FragmentActivity {
         ComponentName c = startService(i);
         Intent i1 = new Intent(this, SerialReceSendService.class);
         ComponentName c1 = startService(i1);
+        Intent i2 = new Intent(this, LWCalculateService.class);
+        ComponentName c2 = startService(i2);
 
         LogUtils.d("mainactivity start service  " + c1.getClassName());
         MachineStatusForMrFrture.startTime = System.currentTimeMillis();
@@ -645,7 +648,7 @@ public class MainActivity extends FragmentActivity {
 //            }
             //判断是否需要自动关机
             judgeShutDown();
-
+            //获取天气数据
             getNetWeather();
         }
 
