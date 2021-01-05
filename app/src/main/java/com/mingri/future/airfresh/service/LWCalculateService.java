@@ -61,6 +61,7 @@ public class LWCalculateService extends Service {
         gxTime = (long) SPUtils.get(this, "gx_time", GXTIME);
         hxTime = (long) SPUtils.get(this, "hx_time", HXTIME);
         uvcTimes = (long) SPUtils.get(this, "uvc_time", UVCTIME);
+        MachineStatusForMrFrture.UVC_TIMES = uvcTimes;
     }
 
     @Override
@@ -78,13 +79,19 @@ public class LWCalculateService extends Service {
             MachineStatusForMrFrture.Filter_Life2 = (byte)(zxTime * 100l / ZXTIME) ;
             MachineStatusForMrFrture.Filter_Life3 = (byte)(gxTime * 100l / GXTIME) ;
             MachineStatusForMrFrture.Filter_Life4 = (byte)(hxTime * 100l / HXTIME) ;
+            MachineStatusForMrFrture.UVC_Life = (byte)(MachineStatusForMrFrture.UVC_TIMES / UVCTIME);
 
             cxTime -= 10 * 60;
             zxTime -= 10 * 60;
             gxTime -= 10 * 60;
             hxTime -= 10 * 60;
+            uvcTimes = MachineStatusForMrFrture.UVC_TIMES;
 
-            LogUtils.d("filter is " + MachineStatusForMrFrture.Filter_Life1 + "  " + MachineStatusForMrFrture.Filter_Life2 );
+            LogUtils.d("filter is cx " + MachineStatusForMrFrture.Filter_Life1 + " zx " + MachineStatusForMrFrture.Filter_Life2
+                    + " gx " + MachineStatusForMrFrture.Filter_Life3
+                    + " hx " + MachineStatusForMrFrture.Filter_Life4
+                    + " uvc " + MachineStatusForMrFrture.UVC_Life
+                    + " uvc times " + MachineStatusForMrFrture.UVC_TIMES);
 
             SPUtils.put(LWCalculateService.this, "cx_time", cxTime);
             SPUtils.put(LWCalculateService.this, "zx_time", zxTime);

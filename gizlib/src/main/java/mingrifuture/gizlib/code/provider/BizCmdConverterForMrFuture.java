@@ -272,6 +272,7 @@ public class BizCmdConverterForMrFuture {
                     date = (msg[16] & 0x40);
                     if (date == 0x40) {
                         MachineStatusForMrFrture.Switch_UVC = true;
+                        MachineStatusForMrFrture.UVC_TIMES--;
                     } else {
                         MachineStatusForMrFrture.Switch_UVC = false;
                     }

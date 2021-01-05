@@ -538,6 +538,7 @@ public class MainActivity extends FragmentActivity {
         MachineStatusForMrFrture.Mode = 0;
         MachineStatusForMrFrture.Wind_Velocity = 2;
         MachineStatusForMrFrture.Switch_UVC = true;
+        MachineStatusForMrFrture.UVC_TIMES--;
 
         if ((Boolean) SPUtils.get(MainActivity.this, "is install", false)) {
             MachineStatusForMrFrture.Switch_Valve = true;
@@ -926,14 +927,22 @@ public class MainActivity extends FragmentActivity {
     private void runSmartMode() {
         LogUtils.d("runSmartMode");
         if (dataStatus) {
-            if (MachineStatusForMrFrture.PM25_Indoor >= 0 && MachineStatusForMrFrture.PM25_Indoor <= 15)
-                MachineStatusForMrFrture.Wind_Velocity = 2;
-            if (MachineStatusForMrFrture.PM25_Indoor > 15 && MachineStatusForMrFrture.PM25_Indoor <= 50)
-                MachineStatusForMrFrture.Wind_Velocity = 4;
-            if (MachineStatusForMrFrture.PM25_Indoor > 50 && MachineStatusForMrFrture.PM25_Indoor <= 80)
-                MachineStatusForMrFrture.Wind_Velocity = 6;
-            if (MachineStatusForMrFrture.PM25_Indoor > 80)
-                MachineStatusForMrFrture.Wind_Velocity = 8;
+            if( MachineStatusForMrFrture.PM25_Indoor >= 75 ){
+                MachineStatusForMrFrture.Wind_Velocity = 7;
+                MachineStatusForMrFrture.Surge_tank = 4;
+            }else if( MachineStatusForMrFrture.CO2_value >= 1500 ){
+                MachineStatusForMrFrture.Wind_Velocity = 7;
+                MachineStatusForMrFrture.Surge_tank = 4;
+            }else if( MachineStatusForMrFrture.PM25_Indoor >= 25 ){
+                MachineStatusForMrFrture.Wind_Velocity = 5;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }else if( MachineStatusForMrFrture.CO2_value >= 1000 ){
+                MachineStatusForMrFrture.Wind_Velocity = 5;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }else{
+                MachineStatusForMrFrture.Wind_Velocity = 3;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }
             dataStatus = false;
         } else {
             if (String.valueOf(MachineStatusForMrFrture.PM25_Indoor) != null) {

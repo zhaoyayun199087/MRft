@@ -115,7 +115,7 @@ public class WLTServerSocket implements RemoteMessageArrivedListener{
 				}
 			}
 		}
-//		mac = "accf28888888";
+//		mac =  "accfdff6f7e5";
 		return true;
 	}
 	

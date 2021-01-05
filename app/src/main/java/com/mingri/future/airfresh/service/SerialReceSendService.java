@@ -315,17 +315,17 @@ public class SerialReceSendService extends Service {
         //调压仓
         MachineStatusForMrFrture.Surge_tank= (byte)(( (msg[dateOffset ] ) & 0x07  ));
         //初效滤网寿命
-        MachineStatusForMrFrture.Filter_Life1= msg[dateOffset + 3];
+//        MachineStatusForMrFrture.Filter_Life1= msg[dateOffset + 3];
         //温度
         MachineStatusForMrFrture.Temperature_Quality= msg[dateOffset + 4];
         //中效滤网寿命
-        MachineStatusForMrFrture.UVC_Life= msg[dateOffset + 5];
+//        MachineStatusForMrFrture.UVC_Life= msg[dateOffset + 5];
         //活性炭滤网寿命
-        MachineStatusForMrFrture.Filter_Life2= msg[dateOffset + 6];
+//        MachineStatusForMrFrture.Filter_Life2= msg[dateOffset + 6];
         //高效滤网寿命
-        MachineStatusForMrFrture.Filter_Life3= msg[dateOffset + 7];
+//        MachineStatusForMrFrture.Filter_Life3= msg[dateOffset + 7];
         //高效滤网寿命
-        MachineStatusForMrFrture.Filter_Life4= msg[dateOffset + 8];
+//        MachineStatusForMrFrture.Filter_Life4= msg[dateOffset + 8];
         //保留
         MachineStatusForMrFrture.set_byte1= msg[dateOffset + 9];
         //保留
