@@ -102,6 +102,8 @@
         <service android:name="com.mingri.future.airfresh.service.SerialReceSendService" />
         <service android:name="com.mingri.future.airfresh.service.GizSendRecvService" />
         <service android:name="com.mingri.future.airfresh.service.LightControlService" />
+        <service android:name="com.mingri.future.airfresh.service.LWCalculateService" />
+
 
         <meta-data
             android:name="PGYER_APPID"

@@ -203,14 +203,22 @@ public class GizSendRecvService extends Service {
      */
     private void runSmartMode() {
         if (String.valueOf(MachineStatusForMrFrture.PM25_Indoor) != null) {
-            if (MachineStatusForMrFrture.PM25_Indoor >= 0 && MachineStatusForMrFrture.PM25_Indoor <= 15)
-                MachineStatusForMrFrture.Wind_Velocity = 2;
-            if (MachineStatusForMrFrture.PM25_Indoor > 15 && MachineStatusForMrFrture.PM25_Indoor <= 50)
-                MachineStatusForMrFrture.Wind_Velocity = 4;
-            if (MachineStatusForMrFrture.PM25_Indoor > 50 && MachineStatusForMrFrture.PM25_Indoor <= 80)
-                MachineStatusForMrFrture.Wind_Velocity = 6;
-            if (MachineStatusForMrFrture.PM25_Indoor > 80)
-                MachineStatusForMrFrture.Wind_Velocity = 8;
+            if( MachineStatusForMrFrture.PM25_Indoor >= 75 ){
+                MachineStatusForMrFrture.Wind_Velocity = 7;
+                MachineStatusForMrFrture.Surge_tank = 4;
+            }else if( MachineStatusForMrFrture.CO2_value >= 1500 ){
+                MachineStatusForMrFrture.Wind_Velocity = 7;
+                MachineStatusForMrFrture.Surge_tank = 4;
+            }else if( MachineStatusForMrFrture.PM25_Indoor >= 25 ){
+                MachineStatusForMrFrture.Wind_Velocity = 5;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }else if( MachineStatusForMrFrture.CO2_value >= 1000 ){
+                MachineStatusForMrFrture.Wind_Velocity = 5;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }else{
+                MachineStatusForMrFrture.Wind_Velocity = 3;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }
         } else
             Toast.makeText(GizSendRecvService.this, "PM2.5数据为空", Toast.LENGTH_SHORT).show();
         if (lastMode != 0)

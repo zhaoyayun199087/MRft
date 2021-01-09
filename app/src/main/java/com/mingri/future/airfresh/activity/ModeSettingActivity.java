@@ -716,19 +716,33 @@ public class ModeSettingActivity extends Activity {
 
     /**
      * 运行智能模式,切换到智能模式
+     * 2021-01-05 10:52:35
+     * 开机默认运行在智能模式(ebm三档/新风三档)
+     * 智能模式下，档位(ebm/新风)根据实测数据与设定参数对比来自动调节，由PM2.5和CO2共同参与自动控制，采取高风速优先的策略。
+     * 延时10s执行
+     *
+     *  PM2.5和CO2取最大值运行, 如PM2.5>75, CO2<1000时, 以PM2.5为准.   如PM2.5<25, CO2>1500时, 以CO2为准
      */
     private void runSmartMode() {
         Log.i("textShow", "切换到智能模式 : " + MachineStatusForMrFrture.Switch_UVC);
         rlCustom.setEnabled(true);
         if (String.valueOf(MachineStatusForMrFrture.PM25_Indoor) != null) {
-            if (MachineStatusForMrFrture.PM25_Indoor >= 0 && MachineStatusForMrFrture.PM25_Indoor <= 15)
-                MachineStatusForMrFrture.Wind_Velocity = 2;
-            if (MachineStatusForMrFrture.PM25_Indoor > 15 && MachineStatusForMrFrture.PM25_Indoor <= 50)
-                MachineStatusForMrFrture.Wind_Velocity = 4;
-            if (MachineStatusForMrFrture.PM25_Indoor > 50 && MachineStatusForMrFrture.PM25_Indoor <= 80)
-                MachineStatusForMrFrture.Wind_Velocity = 6;
-            if (MachineStatusForMrFrture.PM25_Indoor > 80)
-                MachineStatusForMrFrture.Wind_Velocity = 8;
+            if( MachineStatusForMrFrture.PM25_Indoor >= 75 ){
+                MachineStatusForMrFrture.Wind_Velocity = 7;
+                MachineStatusForMrFrture.Surge_tank = 4;
+            }else if( MachineStatusForMrFrture.CO2_value >= 1500 ){
+                MachineStatusForMrFrture.Wind_Velocity = 7;
+                MachineStatusForMrFrture.Surge_tank = 4;
+            }else if( MachineStatusForMrFrture.PM25_Indoor >= 25 ){
+                MachineStatusForMrFrture.Wind_Velocity = 5;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }else if( MachineStatusForMrFrture.CO2_value >= 1000 ){
+                MachineStatusForMrFrture.Wind_Velocity = 5;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }else{
+                MachineStatusForMrFrture.Wind_Velocity = 3;
+                MachineStatusForMrFrture.Surge_tank = 3;
+            }
         } else
             Toast.makeText(ModeSettingActivity.this, "PM2.5数据为空", Toast.LENGTH_SHORT).show();
 
@@ -859,6 +873,7 @@ public class ModeSettingActivity extends Activity {
                 Log.i("textShow", "打开UVC灯");
                 //倒计时结束后开启UVC灯
                 MachineStatusForMrFrture.Switch_UVC = true;
+                MachineStatusForMrFrture.UVC_TIMES--;
                 //发送给设备打开UVC灯的指令
                 int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_SWITCH_UVC);
                 EventBus.getDefault().post(new SendDataToMachine(d));

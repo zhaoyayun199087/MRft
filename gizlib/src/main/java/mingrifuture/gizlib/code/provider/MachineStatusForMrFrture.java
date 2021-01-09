@@ -27,7 +27,8 @@ public class MachineStatusForMrFrture {
     public static int VOC_Quality;  //	室内VOC
     public static byte Temperature_Quality;  //	温度
     public static int CO2_value;  //	室内CO2
-    public static byte UVC_Life;  //	UVC寿命
+    public static byte UVC_Life;  //	UVC寿命百分比
+    public static long UVC_TIMES;  //	UVC次数
     public static boolean fault_CO2;  //	CO2故障
     public static boolean fault_PM25;  //	PM25故障
     public static boolean fault_VOC;  //	VOC故障
@@ -42,7 +43,7 @@ public class MachineStatusForMrFrture {
     public static byte Mode;  //	运行模式
     public static boolean Switch_Plasma2;  //	离子开关2
     public static boolean Switch_Plasma3;  //	离子开关3
-    public static byte Surge_tank;  //	调压仓
+    public static byte Surge_tank;  //	新风
     public static boolean Switch_UVC;  //	UVC开关
     public static boolean Switch_PTC;  //	PTC辅热开关
     public static boolean Switch_Electrostatic;  //	静电集尘开关
