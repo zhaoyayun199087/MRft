@@ -655,6 +655,12 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void sendSerialData(ReceOutDataFromNet data) {
+        iCount = 0;
+    }
+
     /**
      * 从网络上获取室外天气数据
      *
@@ -664,7 +670,7 @@ public class MainActivity extends FragmentActivity {
 
         if( !MachineStatusForMrFrture.bUpdateOutDate ){
             iCount++;
-            if( iCount > 10 ){
+            if( iCount > 30 ){
                 iCount = 0;
                 MachineStatusForMrFrture.bUpdateOutDate = true;
             }

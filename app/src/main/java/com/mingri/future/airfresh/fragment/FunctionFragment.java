@@ -310,7 +310,7 @@ public class FunctionFragment extends BaseFragment {
                     holder.name.setText(getResources().getString(R.string.caid_dings));
                     break;
                 case 8:
-                    holder.icon.setImageResource(R.drawable.ic_location_on_black_24dp);
+                    holder.icon.setImageResource(R.mipmap.location_checked);
                     holder.name.setText(getResources().getString(R.string.zone_chise));
                     break;
                 case 9:

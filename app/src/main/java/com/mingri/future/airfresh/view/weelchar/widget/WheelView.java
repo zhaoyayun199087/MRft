@@ -21,8 +21,11 @@ package com.mingri.future.airfresh.view.weelchar.widget;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
@@ -39,6 +42,8 @@ import com.mingri.future.airfresh.view.weelchar.widget.adapters.WheelViewAdapter
 
 import java.util.LinkedList;
 import java.util.List;
+
+import mingrifuture.gizlib.code.util.LogUtils;
 
 
 /**
@@ -615,10 +620,11 @@ public class WheelView extends View {
 		super.onDraw(canvas);
 
 		if (viewAdapter != null && viewAdapter.getItemsCount() > 0) {
+//			drawCenterRect(canvas);
+
 			updateView();
 
 			drawItems(canvas);
-			drawCenterRect(canvas);
 		}
 
 		if (drawShadows) drawShadows(canvas);
@@ -656,27 +662,35 @@ public class WheelView extends View {
 		canvas.restore();
 	}
 
+
+	Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.province_bg);
+	public void setBgBitmat(Bitmap b){
+		bitmap = b;
+		invalidate();
+	}
+
 	/**
 	 * Draws rect for current value
 	 * @param canvas the canvas for drawing
 	 */
-	private void drawCenterRect(Canvas canvas) {
+	private  void drawCenterRect(Canvas canvas) {
 		int center = getHeight() / 2;
 		int offset = (int) (getItemHeight() / 2 * 1.2);
-		/*/ Remarked by wulianghuan 2014-11-27  使用自己的画线，而不是描边
-		Rect rect = new Rect(left, top, right, bottom)
-		centerDrawable.setBounds(bounds)
-		centerDrawable.setBounds(0, center - offset, getWidth(), center + offset);
-		centerDrawable.draw(canvas);
-		//*/
-		Paint paint = new Paint();
-		paint.setColor(getResources().getColor(R.color.province_line_border));
-		// 设置线宽
-		paint.setStrokeWidth((float) 3);
-		// 绘制上边直线
-		canvas.drawLine(0, center - offset, getWidth(), center - offset, paint);
-		// 绘制下边直线
-		canvas.drawLine(0, center + offset, getWidth(), center + offset, paint);
+		// Remarked by wulianghuan 2014-11-27  使用自己的画线，而不是描边
+		Rect rect = new Rect(40, center - offset , getWidth()-40, center + offset );
+//		centerDrawable.setBounds(0, center - offset, getWidth(), center + offset);
+//		centerDrawable.draw(canvas);
+		LogUtils.d("height is " + ( center - offset));
+		Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		canvas.drawBitmap(bitmap,null ,rect, mPaint);
+//		Paint paint = new Paint();
+//		paint.setColor(getResources().getColor(R.color.province_line_border));
+//		// 设置线宽
+//		paint.setStrokeWidth((float) 3);
+//		// 绘制上边直线
+//		canvas.drawLine(0, center - offset, getWidth(), center - offset, paint);
+//		// 绘制下边直线
+//		canvas.drawLine(0, center + offset, getWidth(), center + offset, paint);
 		//*/
 	}
 

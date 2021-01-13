@@ -190,6 +190,9 @@ public class DetailParaActivity extends Activity {
     TextView tvFormaldehydeCompany;
     @InjectView(R.id.tv_voc_company)
     TextView tvVocCompany;
+    @InjectView(R.id.ll_city_show)
+    LinearLayout llCityShow;
+
     GestureDetector mDetector;
     protected static final float FLIP_DISTANCE = 50;
     @InjectView(R.id.tv_province)
@@ -341,7 +344,9 @@ public class DetailParaActivity extends Activity {
             llInpara.setVisibility(View.VISIBLE);
             llInpara.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_left_in));
             llOutpara.setVisibility(View.GONE);
+            llCityShow.setVisibility(View.GONE);
             llOutpara.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_right_out));
+            llCityShow.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_right_out));
             ivInParaIndex.setVisibility(View.VISIBLE);
             ivOutParaIndex.setVisibility(View.INVISIBLE);
         } else {
@@ -352,6 +357,8 @@ public class DetailParaActivity extends Activity {
             llInpara.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_left_out));
             llOutpara.setVisibility(View.VISIBLE);
             llOutpara.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_right_in));
+            llCityShow.setVisibility(View.VISIBLE);
+            llCityShow.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_right_in));
             ivInParaIndex.setVisibility(View.INVISIBLE);
             ivOutParaIndex.setVisibility(View.VISIBLE);
         }

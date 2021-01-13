@@ -6,45 +6,101 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_marginTop="43dp"
-        android:textSize="16sp"
-        android:layout_width="wrap_content"
-        android:textColor="#ffffff"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="切换地址" />
-
-    <TextView
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:textColor="@color/color_fefefe"
-        android:text="切换地址查看选中城市的室外空气质量" />
 
     <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dip"
-        android:orientation="horizontal" >
-
-        <com.mingri.future.airfresh.view.weelchar.widget.WheelView
-            android:id="@+id/id_province"
-            android:layout_width="0dp"
+        android:id="@+id/ll_wifi"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="43dp"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:textColor="#ffffff"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
-        </com.mingri.future.airfresh.view.weelchar.widget.WheelView>
+            android:layout_centerHorizontal="true"
+            android:text="切换地址" />
 
-        <com.mingri.future.airfresh.view.weelchar.widget.WheelView
-            android:id="@+id/id_city"
-            android:layout_width="0dp"
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" >
-        </com.mingri.future.airfresh.view.weelchar.widget.WheelView>
+            android:textSize="12sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/color_fefefe"
+            android:text="切换地址查看选中城市的室外空气质量" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dip"
+            android:orientation="horizontal" >
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/province_bg"
+                    ></ImageView>
+
+                <com.mingri.future.airfresh.view.weelchar.widget.WheelView
+                    android:id="@+id/id_province"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                </com.mingri.future.airfresh.view.weelchar.widget.WheelView>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/city_bg"
+                    ></ImageView>
+
+
+                <com.mingri.future.airfresh.view.weelchar.widget.WheelView
+                    android:id="@+id/id_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </com.mingri.future.airfresh.view.weelchar.widget.WheelView>
+
+            </RelativeLayout>
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_nowifi"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/unwifi"></ImageView>
+
     </LinearLayout>
 
 </LinearLayout>
