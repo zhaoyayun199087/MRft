@@ -98,18 +98,18 @@ public class FunctionFragment extends BaseFragment {
 //        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 //        transaction.add(R.id.fl_container, new ClockFragment()).commitAllowingStateLoss();
 //        transaction.add(R.id.fl_container,new LanguageFragment()).commitAllowingStateLoss();
-        listview.setSelection(Integer.MAX_VALUE / 2 - 3);
+        listview.setSelection(firstVisible );
 //        adapter.setSelected(firstVisible);
         LogUtils.d("is run ");
 //        showModelFragment(7);
-        showModelFragment(3);
+//        showModelFragment(3);
         showModelFragment(firstVisible + 2);
     }
 
     private void showModelFragment(int i) {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         hidenFragment(transaction);
-        switch (i % 10) {
+        switch (i % 11) {
             case 0://语言
                 if (langFrag == null) {
                     langFrag = new LanguageFragment();
@@ -271,7 +271,7 @@ public class FunctionFragment extends BaseFragment {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            int iPosition = position % 10;
+            int iPosition = position % 11;
             switch (iPosition) {
                 case 0:
                     holder.icon.setImageResource(R.drawable.selector_caid_yuy);
@@ -310,7 +310,7 @@ public class FunctionFragment extends BaseFragment {
                     holder.name.setText(getResources().getString(R.string.caid_dings));
                     break;
                 case 8:
-                    holder.icon.setImageResource(R.drawable.ic_location_on_black_24dp);
+                    holder.icon.setImageResource(R.mipmap.location_checked);
                     holder.name.setText(getResources().getString(R.string.zone_chise));
                     break;
                 case 9:

@@ -2,6 +2,9 @@ package com.mingri.future.airfresh.fragment;
 
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -9,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mingri.future.airfresh.R;
@@ -16,6 +20,7 @@ import com.mingri.future.airfresh.activity.MainActivity;
 import com.mingri.future.airfresh.bean.ReceDataFromMachine;
 import com.mingri.future.airfresh.bean.ReceOutDataFromNet;
 import com.mingri.future.airfresh.bean.SendDataToMachine;
+import com.mingri.future.airfresh.bean.WifiChangeEvent;
 import com.mingri.future.airfresh.util.CommonUtils;
 import com.mingri.future.airfresh.util.CreateCmdToMachineFactory;
 import com.mingri.future.airfresh.view.weelchar.widget.OnWheelChangedListener;
@@ -46,6 +51,8 @@ import mingrifuture.gizlib.code.provider.MachineStatusForMrFrture;
 import mingrifuture.gizlib.code.util.LogUtils;
 import mingrifuture.gizlib.code.util.SPUtils;
 
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
 /**
  * Created by Administrator on 2017/6/27.
  */
@@ -53,7 +60,7 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
 
     WheelView idProvince;
     WheelView idCity;
-
+    LinearLayout llWifiOn, llWifiOff;
 
     /**
      * 所有省
@@ -97,8 +104,41 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         View view = inflater.inflate(R.layout.frg_zone_choise, null);
         idProvince = (WheelView)view.findViewById(R.id.id_province);
         idCity = (WheelView)view.findViewById(R.id.id_city);
+        idProvince.setBgBitmat(BitmapFactory.decodeResource(getResources(), R.mipmap.province_bg));
+        idCity.setBgBitmat(BitmapFactory.decodeResource(getResources(), R.mipmap.city_bg));
+        llWifiOff = (LinearLayout) view.findViewById(R.id.ll_nowifi);
+        llWifiOn = (LinearLayout) view.findViewById(R.id.ll_wifi);
         updateUI();
+        if( isWifiConnected() ){
+            llWifiOn.setVisibility(View.VISIBLE);
+            llWifiOff.setVisibility(View.GONE);
+        }
+        EventBus.getDefault().register(this);
         return view;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void sendSerialData(WifiChangeEvent data) {
+        int level = data.getLevel();
+        boolean conn = data.isConn();
+        LogUtils.d("wifi change " + level + " " + conn);
+        if (!conn) {
+            llWifiOn.setVisibility(View.GONE);
+            llWifiOff.setVisibility(View.VISIBLE);
+        } else {
+            llWifiOn.setVisibility(View.VISIBLE);
+            llWifiOff.setVisibility(View.GONE);
+        }
+    }
+
+    private boolean isWifiConnected(){
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (wifi.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
     private void updateUI() {
@@ -109,6 +149,8 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+
     }
 
     @Override
@@ -167,7 +209,7 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
                 for (int j=0; j< cityList.size(); j++) {
                     // 遍历省下面的所有市的数据
                     cityNames[j] = cityList.get(j).getName();
-                    String setedCity = (String)SPUtils.get(getActivity(), "city_name", "");
+                    String setedCity = (String)SPUtils.get(getActivity(), "city_name", "成都市");
                     LogUtils.d("city set name " + setedCity + "  " + cityNames[j]);
                     if( setedCity.equals(cityNames[j]) ){
                         LogUtils.d("city set i j " + i + "  " + j);
@@ -262,6 +304,7 @@ public class ZoneChioseFragment extends BaseFragment implements OnWheelChangedLi
         if (areas == null) {
             areas = new String[] { "" };
         }
+        MachineStatusForMrFrture.bUpdateOutDate = false;
         EventBus.getDefault().post(new ReceOutDataFromNet());
     }
 

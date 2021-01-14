@@ -81,10 +81,10 @@ public class LWCalculateService extends Service {
             MachineStatusForMrFrture.Filter_Life4 = (byte)(hxTime * 100l / HXTIME) ;
             MachineStatusForMrFrture.UVC_Life = (byte)(MachineStatusForMrFrture.UVC_TIMES / UVCTIME);
 
-            cxTime -= 10 * 60;
-            zxTime -= 10 * 60;
-            gxTime -= 10 * 60;
-            hxTime -= 10 * 60;
+            cxTime -= 10 ;
+            zxTime -= 10 ;
+            gxTime -= 10 ;
+            hxTime -= 10 ;
             uvcTimes = MachineStatusForMrFrture.UVC_TIMES;
 
             LogUtils.d("filter is cx " + MachineStatusForMrFrture.Filter_Life1 + " zx " + MachineStatusForMrFrture.Filter_Life2
