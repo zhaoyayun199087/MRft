@@ -323,7 +323,8 @@ public class TestActivity extends Activity {
             Toast.makeText(TestActivity.this, "PM2.5数据为空", Toast.LENGTH_SHORT).show();
         MachineStatusForMrFrture.Switch_UVC = true;
         MachineStatusForMrFrture.Mode = 0;
-        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE | Constants.ANDROID_SEND_SWITCH_UVC | Constants.ANDROID_SEND_WIND_LEVEL);
+        LogUtils.d("run smart mode " +  MachineStatusForMrFrture.Wind_Velocity+ "  " + MachineStatusForMrFrture.Surge_tank );
+        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE | Constants.ANDROID_SEND_SWITCH_UVC | Constants.ANDROID_SEND_WIND_LEVEL| Constants.ANDROID_SEND_SURGE_TANK);
         EventBus.getDefault().post(new SendDataToMachine(d));
     }
 

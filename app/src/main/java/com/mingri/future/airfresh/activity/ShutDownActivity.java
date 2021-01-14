@@ -27,9 +27,9 @@ public class ShutDownActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //è®¾ç½®æ— æ ‡é¢˜
+        //ÉèÖÃÎŞ±êÌâ
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //è®¾ç½®å…¨å±
+        //ÉèÖÃÈ«ÆÁ
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_shutdown);
@@ -70,11 +70,11 @@ public class ShutDownActivity extends Activity {
 //            openMachine();
 //            finish();
 //        }
-        //å±è”½éŸ³é‡é”® return true
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) // éŸ³é‡å¢å¤§é”®å“åº”æ’¤é”€
+        //ÆÁ±ÎÒôÁ¿¼ü return true
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) // ÒôÁ¿Ôö´ó¼üÏìÓ¦³·Ïú
         {
             return true;
-        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP)// éŸ³é‡å‡å°é”®å“åº”é‡åš
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP)// ÒôÁ¿¼õĞ¡¼üÏìÓ¦ÖØ×ö
         {
             return true;
         } else return super.onKeyUp(keyCode, event);

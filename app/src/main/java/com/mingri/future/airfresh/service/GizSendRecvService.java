@@ -195,9 +195,7 @@ public class GizSendRecvService extends Service {
         }
     }
 
-
     private int lastMode = -1;
-
     /**
      * 运行智能模式
      */
@@ -225,7 +223,8 @@ public class GizSendRecvService extends Service {
             MachineStatusForMrFrture.Switch_UVC = true;
         MachineStatusForMrFrture.Mode = 0;
         lastMode = MachineStatusForMrFrture.Mode;
-        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE | Constants.ANDROID_SEND_SWITCH_UVC | Constants.ANDROID_SEND_WIND_LEVEL);
+        LogUtils.d("run smart mode " +  MachineStatusForMrFrture.Wind_Velocity+ "  " + MachineStatusForMrFrture.Surge_tank );
+        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE | Constants.ANDROID_SEND_SWITCH_UVC | Constants.ANDROID_SEND_WIND_LEVEL| Constants.ANDROID_SEND_SURGE_TANK);
         EventBus.getDefault().post(new SendDataToMachine(d));
     }
 

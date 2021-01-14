@@ -154,18 +154,21 @@ public class MainActivity extends FragmentActivity {
     LocationListener ll = new LocationListener(){
         public void onLocationChanged(Location location){
             updateView(location);
+            LogUtils.d("location change " );
         }
 
         @Override
         public void onProviderDisabled(String provider) {
             // TODO Auto-generated method stub
             updateView(null);
+            LogUtils.d("location onProviderDisabled "  + provider);
         }
 
         @Override
         public void onProviderEnabled(String provider) {
             // TODO Auto-generated method stub
             Location l = lm.getLastKnownLocation(provider);
+            LogUtils.d("location onProviderEnabled "  + provider);
             updateView(l);
         }
 
@@ -391,11 +394,13 @@ public class MainActivity extends FragmentActivity {
         }, 5000);
 
         //通过ip获取本地位置
-        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        String bestProvider = lm.getBestProvider(getCriteria(), true);
-        Location l = lm.getLastKnownLocation(bestProvider);
-        updateView(l);
-        lm.requestLocationUpdates(bestProvider, 5000, 8, ll);
+//        lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+//        String bestProvider =LocationManager.NETWORK_PROVIDER;
+//        LogUtils.d("best provider " + bestProvider);
+//        Location l = lm.getLastKnownLocation(bestProvider);
+//        LogUtils.d("best provider " + l);
+//        updateView(l);
+//        lm.requestLocationUpdates(bestProvider, 5000, 8, ll);
 
     }
 
@@ -932,7 +937,7 @@ public class MainActivity extends FragmentActivity {
      */
     private void runSmartMode() {
         LogUtils.d("runSmartMode");
-        if (dataStatus) {
+        if (true) {
             if( MachineStatusForMrFrture.PM25_Indoor >= 75 ){
                 MachineStatusForMrFrture.Wind_Velocity = 7;
                 MachineStatusForMrFrture.Surge_tank = 4;
@@ -964,7 +969,8 @@ public class MainActivity extends FragmentActivity {
                 Toast.makeText(MainActivity.this, "PM2.5数据为空", Toast.LENGTH_SHORT).show();
         }
         MachineStatusForMrFrture.Mode = 0;
-        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE | Constants.ANDROID_SEND_WIND_LEVEL);  // | Constants.ANDROID_SEND_SWITCH_UVC
+        LogUtils.d("run smart mode " +  MachineStatusForMrFrture.Wind_Velocity+ "  " + MachineStatusForMrFrture.Surge_tank );
+        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE |  Constants.ANDROID_SEND_WIND_LEVEL| Constants.ANDROID_SEND_SURGE_TANK);
         EventBus.getDefault().post(new SendDataToMachine(d));
     }
 

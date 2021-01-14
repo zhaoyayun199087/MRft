@@ -751,7 +751,8 @@ public class ModeSettingActivity extends Activity {
         SPUtils.put(ModeSettingActivity.this, "mode", MachineStatusForMrFrture.Mode);
         lastMode = MachineStatusForMrFrture.Mode;
         //发送给设备的指令
-        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE | Constants.ANDROID_SEND_WIND_LEVEL);
+        LogUtils.d("run smart mode " +  MachineStatusForMrFrture.Wind_Velocity+ "  " + MachineStatusForMrFrture.Surge_tank );
+        int d[] = CreateCmdToMachineFactory.createControlCmd(Constants.ANDROID_SEND_MODE  | Constants.ANDROID_SEND_WIND_LEVEL| Constants.ANDROID_SEND_SURGE_TANK);
         EventBus.getDefault().post(new SendDataToMachine(d));
     }
 

@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/gizlib/mrft-online-gizlib.iml" filepath="$PROJECT_DIR$/gizlib/mrft-online-gizlib.iml" group="mrft-online/gizlib" />
       <module fileurl="file://$PROJECT_DIR$/infinite-cards/mrft-online-infinite-cards.iml" filepath="$PROJECT_DIR$/infinite-cards/mrft-online-infinite-cards.iml" group="mrft-online/infinite-cards" />
       <module fileurl="file://$PROJECT_DIR$/mrfure.iml" filepath="$PROJECT_DIR$/mrfure.iml" group="mrfure" />
+      <module fileurl="file://$PROJECT_DIR$/workspace3-mrft-online.iml" filepath="$PROJECT_DIR$/workspace3-mrft-online.iml" group="mrft-online" />
     </modules>
   </component>
 </project>
